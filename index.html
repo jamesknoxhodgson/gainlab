@@ -573,6 +573,44 @@ margin-right: 0.4rem;
 margin-bottom: 0.4rem;
 }
 
+/* ── RANGE SLIDER ── */
+.slider-field { margin-bottom:1.25rem; }
+.slider-field > label { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; }
+.slider-val {
+font-family:'Bebas Neue',sans-serif;
+font-size:1.1rem;
+color:var(--accent);
+letter-spacing:0.04em;
+min-width:3rem;
+text-align:right;
+}
+input[type=range] {
+-webkit-appearance:none; appearance:none;
+width:100%; height:4px;
+background:var(--border); border-radius:2px;
+outline:none; cursor:pointer; border:none; padding:0;
+}
+input[type=range]::-webkit-slider-thumb {
+-webkit-appearance:none;
+width:20px; height:20px; border-radius:50%;
+background:var(--accent); cursor:pointer;
+box-shadow:0 0 0 3px rgba(200,241,53,0.2);
+transition:box-shadow 0.2s;
+}
+input[type=range]:hover::-webkit-slider-thumb { box-shadow:0 0 0 6px rgba(200,241,53,0.15); }
+input[type=range]::-moz-range-thumb {
+width:20px; height:20px; border-radius:50%;
+background:var(--accent); cursor:pointer; border:none;
+box-shadow:0 0 0 3px rgba(200,241,53,0.2);
+}
+.slider-markers {
+display:flex; justify-content:space-between; margin-top:0.5rem;
+}
+.slider-markers span {
+font-family:'DM Mono',monospace; font-size:0.58rem;
+color:#333; letter-spacing:0.06em; text-transform:uppercase;
+}
+
 /* ── LOADING SPINNER for results ── */
 .result-loading {
 display: flex;
@@ -763,6 +801,9 @@ TDEE CALCULATOR &nbsp;·&nbsp; MACRO SPLITTER &nbsp;·&nbsp; ONE REP MAX &nbsp;�
 <button class="tab-btn" onclick="showCalc('orm', this)">1 Rep Max</button>
 <button class="tab-btn" onclick="showCalc('bodyfat', this)">Body Fat %</button>
 <button class="tab-btn" onclick="showCalc('protein', this)">Protein Needs</button>
+<button class="tab-btn" onclick="showCalc('strain', this)">Muscle Strain</button>
+<button class="tab-btn" onclick="showCalc('volume', this)">Volume</button>
+<button class="tab-btn" onclick="showCalc('cutbulk', this)">Cut / Bulk</button>
 </div>
 
 <!-- CALCULATORS -->
@@ -1000,9 +1041,228 @@ TDEE CALCULATOR &nbsp;·&nbsp; MACRO SPLITTER &nbsp;·&nbsp; ONE REP MAX &nbsp;�
 
 </div>
 
+<!-- MUSCLE STRAIN -->
+
+<div class="calculator" id="calc-strain">
+<div class="calc-grid">
+<div class="calc-panel">
+<div class="calc-title">Muscle Strain Score</div>
+<div class="calc-desc">Enter your workout details to get a fatigue score and personalised recovery time estimate based on volume, intensity and muscle group.</div>
+
+```
+<div class="field">
+<label>Muscle Group Trained</label>
+<select id="str-muscle">
+<option value="chest">Chest</option>
+<option value="back">Back</option>
+<option value="shoulders">Shoulders</option>
+<option value="biceps">Biceps</option>
+<option value="triceps">Triceps</option>
+<option value="quads">Quads</option>
+<option value="hamstrings">Hamstrings</option>
+<option value="glutes">Glutes</option>
+<option value="calves">Calves</option>
+<option value="abs">Abs / Core</option>
+<option value="traps">Traps</option>
+<option value="forearms">Forearms</option>
+</select>
 </div>
 
-<!-- PROTEIN GUIDE -->
+<div class="field">
+<label>Number of Sets</label>
+<input type="number" id="str-sets" placeholder="e.g. 4">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Reps Per Set</label>
+<input type="number" id="str-reps" placeholder="e.g. 10">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Weight Used (kg)</label>
+<input type="number" id="str-weight" placeholder="e.g. 80">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Estimated 1 Rep Max (kg)</label>
+<input type="number" id="str-orm" placeholder="e.g. 100">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Training Experience</label>
+<select id="str-exp">
+<option value="beginner">Beginner (under 1 year)</option>
+<option value="intermediate" selected>Intermediate (1–3 years)</option>
+<option value="advanced">Advanced (3+ years)</option>
+</select>
+</div>
+
+<div class="field">
+<label>How did it feel?</label>
+<select id="str-rir">
+<option value="easy">Easy — plenty left in the tank</option>
+<option value="moderate" selected>Moderate — challenging but controlled</option>
+<option value="hard">Hard — near failure on last sets</option>
+<option value="maximal">Maximal — went to failure</option>
+</select>
+</div>
+
+<button class="calc-btn" onclick="calcStrain()">CALCULATE STRAIN</button>
+</div>
+
+<div class="result-panel" id="result-strain">
+<div class="result-empty">
+<div class="empty-icon">🔥</div>
+<div class="empty-title">Your Strain Score</div>
+<div class="empty-hint">enter workout details</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+<!-- VOLUME CALCULATOR -->
+
+<div class="calculator" id="calc-volume">
+<div style="max-width:100%;">
+<div class="calc-panel" style="margin-bottom:1.25rem;">
+<div class="calc-title">Weekly Volume Calculator</div>
+<div class="calc-desc">Enter your weekly sets per muscle group. We'll tell you if you're under-training, in the optimal hypertrophy range, or overreaching — based on sports science literature.</div>
+<div style="display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;">
+<div class="field" style="margin:0;flex:1;min-width:160px;">
+<label>Experience Level</label>
+<select id="vol-exp" onchange="updateVolumeRanges()">
+<option value="beginner">Beginner (under 1 year)</option>
+<option value="intermediate" selected>Intermediate (1–3 years)</option>
+<option value="advanced">Advanced (3+ years)</option>
+</select>
+</div>
+<button class="calc-btn" style="margin-top:1.4rem;width:auto;padding:0.75rem 2rem;flex-shrink:0;" onclick="calcVolume()">ANALYSE VOLUME</button>
+</div>
+</div>
+
+```
+<!-- MUSCLE INPUT GRID -->
+<div id="vol-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.75rem;margin-bottom:1.25rem;"></div>
+
+<!-- RESULTS -->
+<div id="result-volume">
+<div style="border:1px solid #1e1e1e;border-radius:8px;padding:2.5rem;text-align:center;background:#0d0d0d;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#1e1e1e;line-height:1;margin-bottom:0.5rem;">↑</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.1em;color:#222;">ENTER YOUR WEEKLY SETS ABOVE</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#1e1e1e;text-transform:uppercase;letter-spacing:0.1em;margin-top:0.4rem;">then hit analyse volume</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+<!-- CUT / BULK PLANNER -->
+
+<div class="calculator" id="calc-cutbulk">
+<div class="calc-grid">
+<div class="calc-panel">
+<div class="calc-title">Cut / Bulk Planner</div>
+<div class="calc-desc">Enter your stats for a personalised plan — daily calories, weekly progress, target date, and phase breakdown. Use the aggression slider to dial in how fast you want to move.</div>
+
+```
+<div class="field">
+<label>Gender</label>
+<div class="radio-group">
+<input type="radio" name="cb-gender" id="cbg-m" value="male" checked>
+<label for="cbg-m">Male</label>
+<input type="radio" name="cb-gender" id="cbg-f" value="female">
+<label for="cbg-f">Female</label>
+</div>
+</div>
+
+<div class="field">
+<label>Current Weight (kg)</label>
+<input type="number" id="cb-weight" placeholder="e.g. 80">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Current Body Fat %</label>
+<input type="number" id="cb-bf" placeholder="e.g. 18">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Your TDEE (kcal/day)</label>
+<input type="number" id="cb-tdee" placeholder="e.g. 2500">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Goal</label>
+<select id="cb-goal" onchange="updateAggressionLabel()">
+<option value="auto">Tell me what I should do</option>
+<option value="cut">I want to cut (lose fat)</option>
+<option value="bulk">I want to bulk (build muscle)</option>
+<option value="recomp">I want to recomp (both)</option>
+</select>
+</div>
+
+<div class="field">
+<label>Training Experience</label>
+<select id="cb-exp">
+<option value="beginner">Beginner (under 1 year)</option>
+<option value="intermediate" selected>Intermediate (1–3 years)</option>
+<option value="advanced">Advanced (3+ years)</option>
+</select>
+</div>
+
+<div class="field">
+<label>Timeframe</label>
+<select id="cb-weeks">
+<option value="8">8 weeks</option>
+<option value="12" selected>12 weeks</option>
+<option value="16">16 weeks</option>
+<option value="24">24 weeks</option>
+</select>
+</div>
+
+<!-- AGGRESSION SLIDER -->
+<div class="slider-field">
+<label>
+<span id="cb-aggression-label">Deficit Aggression</span>
+<span class="slider-val" id="cb-aggression-val">Moderate</span>
+</label>
+<input type="range" id="cb-aggression" min="1" max="5" value="3"
+oninput="updateAggressionDisplay()">
+<div class="slider-markers">
+<span>Slow &amp; Steady</span>
+<span>Moderate</span>
+<span>Aggressive</span>
+</div>
+<div id="cb-aggression-hint" style="margin-top:0.6rem;font-family:'DM Mono',monospace;font-size:0.62rem;color:#555;letter-spacing:0.04em;line-height:1.5;">
+~20% deficit · ~0.5kg/week · Minimal muscle loss risk
+</div>
+</div>
+
+<button class="calc-btn" onclick="calcCutBulk()">BUILD MY PLAN</button>
+</div>
+
+<div class="result-panel" id="result-cutbulk">
+<div class="result-empty">
+<div class="empty-icon">📈</div>
+<div class="empty-title">Your Personalised Plan</div>
+<div class="empty-hint">enter your stats above</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+</div>
 
 <div id="protein-guide" class="section-reveal" style="max-width:1100px; margin: 4rem auto 0; padding: 0 2rem;">
 
@@ -1867,6 +2127,580 @@ ${strRows}
 </div>`;
 }
 
+// ── MUSCLE STRAIN ────────────────────
+function calcStrain() {
+clearErrors(['str-sets','str-reps','str-weight','str-orm']);
+if (!validateFields([
+{id:'str-sets', label:'Sets', min:1, max:30},
+{id:'str-reps', label:'Reps', min:1, max:50},
+{id:'str-weight', label:'Weight', min:1, max:500},
+{id:'str-orm', label:'1RM', min:1, max:500},
+])) return;
+
+const muscle = document.getElementById('str-muscle').value;
+const sets = +document.getElementById('str-sets').value;
+const reps = +document.getElementById('str-reps').value;
+const weight = +document.getElementById('str-weight').value;
+const orm = +document.getElementById('str-orm').value;
+const exp = document.getElementById('str-exp').value;
+const feel = document.getElementById('str-rir').value;
+
+if (weight > orm) { setError('str-weight', 'Weight can\'t exceed your 1RM'); return; }
+
+saveInputs('strain', ['str-muscle','str-sets','str-reps','str-weight','str-orm','str-exp','str-rir']);
+
+// Intensity as % of 1RM
+const intensity = weight / orm;
+
+// Volume load (sets × reps × weight)
+const volumeLoad = sets * reps * weight;
+
+// Intensity score (0–40): higher % of 1RM = more strain
+const intensityScore = Math.min(40, Math.round(intensity * 40));
+
+// Volume score (0–30): normalised by muscle group typical volume
+const volNorm = { chest:2000, back:3000, shoulders:1500, biceps:800, triceps:900,
+quads:4000, hamstrings:3000, glutes:3500, calves:1500,
+abs:500, traps:1200, forearms:600 };
+const volumeScore = Math.min(30, Math.round((volumeLoad / volNorm[muscle]) * 30));
+
+// Feel/RIR score (0–20)
+const feelScore = { easy:2, moderate:8, hard:15, maximal:20 }[feel];
+
+// Sets score (0–10): more sets = more fatigue
+const setsScore = Math.min(10, Math.round((sets / 6) * 10));
+
+// Raw score 0–100
+let score = intensityScore + volumeScore + feelScore + setsScore;
+score = Math.min(100, Math.max(1, score));
+
+// Experience modifier — advanced athletes recover faster
+const expMod = { beginner:1.3, intermediate:1.0, advanced:0.75 }[exp];
+
+// Muscle recovery base times (hours) — large/complex muscles take longer
+const baseRecovery = { chest:48, back:60, shoulders:44, biceps:36, triceps:36,
+quads:72, hamstrings:72, glutes:60, calves:32,
+abs:24, traps:40, forearms:28 };
+
+// Recovery = base * (score/50) * expMod, clamped
+let recoveryHours = Math.round(baseRecovery[muscle] * (score / 50) * expMod);
+recoveryHours = Math.min(120, Math.max(12, recoveryHours));
+const recoveryDays = (recoveryHours / 24).toFixed(1);
+
+// Strain category
+let category, catColor, catIcon, advice;
+if (score < 25) {
+category = 'Light Strain'; catColor = '#4ade80'; catIcon = '🟢';
+advice = 'Low fatigue — you can likely train this muscle again tomorrow if needed. Good warm-up session.';
+} else if (score < 50) {
+category = 'Moderate Strain'; catColor = '#fbbf24'; catIcon = '🟡';
+advice = 'Standard productive session. Allow full recovery before training this muscle again. Focus on sleep and protein.';
+} else if (score < 75) {
+category = 'High Strain'; catColor = '#fb923c'; catIcon = '🟠';
+advice = 'Significant fatigue accumulated. Prioritise recovery — extra sleep, high protein intake, and light movement only.';
+} else {
+category = 'Maximum Strain'; catColor = '#f87171'; catIcon = '🔴';
+advice = 'Very high fatigue load. Full rest required. Consider a deload if this is a recurring pattern. Risk of overtraining.';
+}
+
+// Muscle display name
+const muscleNames = { chest:'Chest', back:'Back', shoulders:'Shoulders',
+biceps:'Biceps', triceps:'Triceps', quads:'Quads', hamstrings:'Hamstrings',
+glutes:'Glutes', calves:'Calves', abs:'Abs / Core', traps:'Traps', forearms:'Forearms' };
+
+// Score bar segments
+const segW = Math.round(score);
+const segColor = score < 25 ? '#4ade80' : score < 50 ? '#fbbf24' : score < 75 ? '#fb923c' : '#f87171';
+
+setResult('strain', `
+<div class="result-number" style="color:${catColor}">${score}</div>
+<div class="result-unit">Strain Score / 100</div>
+<div style="margin-bottom:1.25rem;">
+<div class="bar-container" style="height:8px;margin-bottom:0.5rem;">
+<div class="bar-fill" data-w="${segW}" style="width:0;background:${segColor};border-radius:4px;"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:0.6rem;color:#444;">
+<span>LOW</span><span>MODERATE</span><span>HIGH</span><span>MAX</span>
+</div>
+</div>
+
+<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1.25rem;">
+<span style="font-size:1rem;">${catIcon}</span>
+<span style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.06em;color:${catColor};">${category}</span>
+</div>
+
+<div class="result-breakdown">
+<div class="breakdown-row">
+<span class="breakdown-label">Muscle</span>
+<span class="breakdown-val">${muscleNames[muscle]}</span>
+</div>
+<div class="breakdown-row">
+<span class="breakdown-label">Volume Load</span>
+<span class="breakdown-val">${volumeLoad.toLocaleString()} kg</span>
+</div>
+<div class="breakdown-row">
+<span class="breakdown-label">Intensity</span>
+<span class="breakdown-val">${Math.round(intensity*100)}% of 1RM</span>
+</div>
+<div class="breakdown-row" style="margin-top:0.5rem;padding-top:0.75rem;border-top:1px solid #2a2a2a;">
+<span class="breakdown-label">Recommended Rest</span>
+<span class="breakdown-val highlight">${recoveryDays} days (${recoveryHours}h)</span>
+</div>
+<div style="margin-top:1rem;padding:1rem;background:#0d0d0d;border-radius:6px;border:1px solid #1e1e1e;">
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#444;margin-bottom:0.4rem;">Recovery Advice</div>
+<div style="font-size:0.82rem;color:#999;line-height:1.6;">💡 ${advice}</div>
+</div>
+</div>`);
+showToast('Strain score calculated ✓');
+}
+
+// ── VOLUME CALCULATOR ────────────────
+const volumeRanges = {
+beginner: {
+chest: {mev:4, mav:10, mrv:15},
+back: {mev:4, mav:10, mrv:15},
+shoulders: {mev:4, mav:10, mrv:15},
+biceps: {mev:4, mav:10, mrv:14},
+triceps: {mev:4, mav:10, mrv:14},
+quads: {mev:4, mav:10, mrv:16},
+hamstrings: {mev:4, mav:10, mrv:15},
+glutes: {mev:4, mav:10, mrv:16},
+calves: {mev:4, mav:10, mrv:16},
+abs: {mev:4, mav:10, mrv:16},
+traps: {mev:4, mav:10, mrv:14},
+},
+intermediate: {
+chest: {mev:6, mav:16, mrv:22},
+back: {mev:8, mav:18, mrv:25},
+shoulders: {mev:6, mav:16, mrv:22},
+biceps: {mev:6, mav:14, mrv:20},
+triceps: {mev:6, mav:14, mrv:20},
+quads: {mev:8, mav:16, mrv:24},
+hamstrings: {mev:6, mav:14, mrv:20},
+glutes: {mev:6, mav:14, mrv:20},
+calves: {mev:6, mav:16, mrv:22},
+abs: {mev:6, mav:16, mrv:20},
+traps: {mev:6, mav:14, mrv:20},
+},
+advanced: {
+chest: {mev:8, mav:20, mrv:28},
+back: {mev:10, mav:22, mrv:30},
+shoulders: {mev:8, mav:20, mrv:26},
+biceps: {mev:8, mav:18, mrv:26},
+triceps: {mev:8, mav:18, mrv:26},
+quads: {mev:10, mav:20, mrv:28},
+hamstrings: {mev:8, mav:18, mrv:25},
+glutes: {mev:8, mav:16, mrv:24},
+calves: {mev:8, mav:20, mrv:28},
+abs: {mev:8, mav:18, mrv:24},
+traps: {mev:8, mav:16, mrv:22},
+},
+};
+
+const muscleLabels = {
+chest:'Chest', back:'Back', shoulders:'Shoulders',
+biceps:'Biceps', triceps:'Triceps', quads:'Quads',
+hamstrings:'Hamstrings', glutes:'Glutes', calves:'Calves',
+abs:'Abs / Core', traps:'Traps',
+};
+
+const muscleIcons = {
+chest:'🫁', back:'🔙', shoulders:'🏋️', biceps:'💪', triceps:'💪',
+quads:'🦵', hamstrings:'🦵', glutes:'🍑', calves:'🦶', abs:'⚡', traps:'🏔️',
+};
+
+function buildVolumeGrid() {
+const exp = document.getElementById('vol-exp').value;
+const ranges = volumeRanges[exp];
+const grid = document.getElementById('vol-grid');
+
+grid.innerHTML = Object.entries(muscleLabels).map(([key, label]) => {
+const r = ranges[key];
+const savedVal = (() => { try { return JSON.parse(localStorage.getItem('gainlab_volume')||'{}')[key] || 0; } catch(e){ return 0; } })();
+return `
+<div style="background:var(--mid);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;">
+<div style="font-size:1.4rem;flex-shrink:0;">${muscleIcons[key]}</div>
+<div style="flex:1;min-width:0;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.05em;margin-bottom:0.2rem;">${label}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;letter-spacing:0.06em;">MEV ${r.mev} · MAV ${r.mav} · MRV ${r.mrv} sets</div>
+</div>
+<div style="display:flex;align-items:center;gap:0.4rem;">
+<button onclick="adjustVol('${key}',-1)" style="width:28px;height:28px;border-radius:50%;background:#111;border:1px solid #333;color:var(--white);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;flex-shrink:0;">−</button>
+<input type="number" id="vol-${key}" value="${savedVal}" min="0" max="40"
+style="width:44px;text-align:center;background:#0a0a0a;border:1px solid #333;color:var(--white);font-family:'Bebas Neue',sans-serif;font-size:1.3rem;padding:0.3rem;border-radius:4px;outline:none;"
+oninput="liveVolumeBar('${key}')">
+<button onclick="adjustVol('${key}',1)" style="width:28px;height:28px;border-radius:50%;background:#111;border:1px solid #333;color:var(--white);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;flex-shrink:0;">+</button>
+</div>
+</div>`;
+}).join('');
+}
+
+function adjustVol(key, delta) {
+const el = document.getElementById('vol-' + key);
+el.value = Math.max(0, Math.min(40, (+el.value || 0) + delta));
+liveVolumeBar(key);
+}
+
+function liveVolumeBar(key) {
+// Save as user types
+saveVolumeInputs();
+}
+
+function saveVolumeInputs() {
+const data = {};
+Object.keys(muscleLabels).forEach(key => {
+const el = document.getElementById('vol-' + key);
+if (el) data[key] = +el.value || 0;
+});
+localStorage.setItem('gainlab_volume', JSON.stringify(data));
+}
+
+function updateVolumeRanges() {
+buildVolumeGrid();
+}
+
+function calcVolume() {
+const exp = document.getElementById('vol-exp').value;
+const ranges = volumeRanges[exp];
+saveVolumeInputs();
+
+const results = Object.entries(muscleLabels).map(([key, label]) => {
+const sets = +document.getElementById('vol-' + key).value || 0;
+const r = ranges[key];
+let status, color, icon, advice;
+
+if (sets === 0) {
+status = 'Not Training'; color = '#444'; icon = '⬛';
+advice = 'No volume this week';
+} else if (sets < r.mev) {
+status = 'Under MEV'; color = '#f87171'; icon = '🔴';
+advice = `Below minimum. Add ${r.mev - sets} more set${r.mev - sets > 1 ? 's' : ''} to stimulate growth`;
+} else if (sets <= r.mav) {
+status = 'Optimal'; color = '#4ade80'; icon = '🟢';
+advice = `Perfect range. ${r.mav - sets > 0 ? `Could add up to ${r.mav - sets} more sets` : 'At maximum adaptive volume'}`;
+} else if (sets <= r.mrv) {
+status = 'High Volume'; color = '#fbbf24'; icon = '🟡';
+advice = `Productive but demanding. ${r.mrv - sets} sets below MRV — monitor recovery`;
+} else {
+status = 'Overreaching'; color = '#f97316'; icon = '🟠';
+advice = `Exceeds MRV by ${sets - r.mrv} sets — high injury and burnout risk. Reduce volume`;
+}
+
+// Bar width as % of MRV
+const barPct = Math.min(100, Math.round((sets / r.mrv) * 100));
+const barColor = sets < r.mev ? '#f87171' : sets <= r.mav ? '#4ade80' : sets <= r.mrv ? '#fbbf24' : '#f97316';
+
+return {key, label, sets, status, color, icon, advice, barPct, barColor, r};
+}).filter(m => m.sets > 0 || true);
+
+const training = results.filter(m => m.sets > 0);
+const totalSets = training.reduce((s, m) => s + m.sets, 0);
+const optimal = training.filter(m => m.status === 'Optimal').length;
+const under = training.filter(m => m.status === 'Under MEV').length;
+const over = training.filter(m => m.status === 'Overreaching' || m.status === 'High Volume').length;
+const notTraining = results.filter(m => m.sets === 0).length;
+
+// Overall score
+const overallScore = training.length === 0 ? 0 :
+Math.round((optimal / training.length) * 100);
+
+const scoreColor = overallScore >= 70 ? '#4ade80' : overallScore >= 40 ? '#fbbf24' : '#f87171';
+
+const muscleRows = results.map(m => `
+<div style="padding:0.9rem 0;border-bottom:1px solid #141414;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.5rem;">
+<div style="display:flex;align-items:center;gap:0.5rem;">
+<span>${m.icon}</span>
+<span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.04em;">${m.label}</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:${m.color};letter-spacing:0.06em;text-transform:uppercase;">${m.status}</span>
+</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:${m.sets===0?'#333':m.color};">${m.sets} sets</div>
+</div>
+<div style="height:5px;background:#1a1a1a;border-radius:3px;margin-bottom:0.4rem;position:relative;overflow:hidden;">
+<div style="position:absolute;left:0;top:0;height:100%;width:${m.barPct}%;background:${m.barColor};border-radius:3px;transition:width 0.6s cubic-bezier(0.34,1.56,0.64,1);"></div>
+<!-- MEV marker -->
+<div style="position:absolute;top:0;left:${Math.round((m.r.mev/m.r.mrv)*100)}%;width:1px;height:100%;background:#333;"></div>
+<!-- MAV marker -->
+<div style="position:absolute;top:0;left:${Math.round((m.r.mav/m.r.mrv)*100)}%;width:1px;height:100%;background:#444;"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:0.58rem;color:#333;margin-bottom:0.3rem;">
+<span>MEV: ${m.r.mev}</span><span>MAV: ${m.r.mav}</span><span>MRV: ${m.r.mrv}</span>
+</div>
+${m.sets > 0 ? `<div style="font-size:0.78rem;color:#666;">💡 ${m.advice}</div>` : ''}
+</div>`).join('');
+
+document.getElementById('result-volume').innerHTML = `
+<div style="background:#111;border:1px solid #222;border-radius:8px;overflow:hidden;animation:fadeUp 0.3s cubic-bezier(0.22,1,0.36,1);">
+
+<!-- HEADER SUMMARY -->
+<div style="padding:1.5rem;background:linear-gradient(135deg,#141414,#0d0d0d);border-bottom:1px solid #1e1e1e;display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;">
+<div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:4rem;line-height:1;color:${scoreColor};">${overallScore}%</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#444;letter-spacing:0.12em;text-transform:uppercase;">Programme Quality</div>
+</div>
+<div style="display:flex;gap:1.25rem;flex-wrap:wrap;">
+<div style="text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#4ade80;line-height:1;">${optimal}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;">Optimal</div>
+</div>
+<div style="text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#f87171;line-height:1;">${under}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;">Under MEV</div>
+</div>
+<div style="text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fbbf24;line-height:1;">${over}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;">Too High</div>
+</div>
+<div style="text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#333;line-height:1;">${notTraining}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;">Not Training</div>
+</div>
+</div>
+</div>
+
+<!-- LEGEND -->
+<div style="padding:0.75rem 1.5rem;background:#0d0d0d;border-bottom:1px solid #1a1a1a;display:flex;gap:1.25rem;flex-wrap:wrap;">
+<span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;">Legend:</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#888;">MEV = Minimum Effective Volume</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#888;">MAV = Maximum Adaptive Volume</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#888;">MRV = Maximum Recoverable Volume</span>
+</div>
+
+<!-- MUSCLE BREAKDOWN -->
+<div style="padding:0.5rem 1.5rem 1rem;">
+${muscleRows}
+</div>
+
+<!-- TOTAL -->
+<div style="padding:1rem 1.5rem;background:#0a0a0a;border-top:1px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center;">
+<span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#444;text-transform:uppercase;letter-spacing:0.1em;">Total Weekly Sets</span>
+<span style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--accent);">${totalSets}</span>
+</div>
+</div>`;
+
+showToast('Volume analysed ✓');
+}
+
+// ── CUT / BULK PLANNER ───────────────
+const aggressionLevels = {
+cut: [
+{ label:'Slow & Steady', pct:0.10, kgWk:0.25, risk:'Lowest muscle loss risk. Ideal for advanced lifters or competition prep.', shortLabel:'Very Slow' },
+{ label:'Conservative', pct:0.15, kgWk:0.35, risk:'Minimal muscle loss. Best for most intermediate lifters.', shortLabel:'Conservative' },
+{ label:'Moderate', pct:0.20, kgWk:0.50, risk:'Balanced speed and muscle retention. Recommended starting point.', shortLabel:'Moderate' },
+{ label:'Aggressive', pct:0.25, kgWk:0.65, risk:'Faster results but increased hunger and slight muscle loss risk.', shortLabel:'Aggressive' },
+{ label:'Very Aggressive',pct:0.30, kgWk:0.80, risk:'Maximum fat loss speed. High hunger, fatigue, and muscle loss risk. Short-term only.', shortLabel:'Very Aggressive' },
+],
+bulk: [
+{ label:'Slow & Clean', pct:0.03, kgWk:0.10, risk:'Minimal fat gain. Very slow — best for advanced lifters who gain fat easily.', shortLabel:'Very Slow' },
+{ label:'Lean Bulk', pct:0.05, kgWk:0.15, risk:'Minimal fat gain with steady muscle growth. Ideal for intermediate lifters.', shortLabel:'Lean' },
+{ label:'Moderate Bulk', pct:0.08, kgWk:0.20, risk:'Balanced muscle gain with manageable fat. Recommended for most people.', shortLabel:'Moderate' },
+{ label:'Aggressive Bulk',pct:0.12, kgWk:0.30, risk:'Faster muscle gain but noticeable fat accumulation. Good for beginners.', shortLabel:'Aggressive' },
+{ label:'Dirty Bulk', pct:0.20, kgWk:0.50, risk:'Maximum calorie surplus. Fast weight gain, significant fat accumulation. Not recommended beyond 8 weeks.', shortLabel:'Dirty Bulk' },
+],
+};
+
+function getAggressionMode() {
+const goal = document.getElementById('cb-goal')?.value;
+return (goal === 'bulk') ? 'bulk' : 'cut';
+}
+
+function calcCutBulk() {
+clearErrors(['cb-weight','cb-bf','cb-tdee']);
+if (!validateFields([
+{id:'cb-weight', label:'Current weight', min:30, max:300},
+{id:'cb-bf', label:'Body fat %', min:3, max:60},
+{id:'cb-tdee', label:'TDEE', min:800, max:8000},
+])) return;
+
+const gender = document.querySelector('input[name="cb-gender"]:checked').value;
+const weight = +document.getElementById('cb-weight').value;
+const bf = +document.getElementById('cb-bf').value;
+const tdee = +document.getElementById('cb-tdee').value;
+const goal = document.getElementById('cb-goal').value;
+const exp = document.getElementById('cb-exp').value;
+const weeks = +document.getElementById('cb-weeks').value;
+const aggVal = +document.getElementById('cb-aggression').value;
+
+saveInputs('cutbulk', ['cb-weight','cb-bf','cb-tdee','cb-goal','cb-exp','cb-weeks']);
+
+const leanMass = Math.round(weight * (1 - bf/100));
+
+// ── RECOMMENDATION ──
+let recommendation, recReason;
+if (goal === 'auto') {
+if (gender === 'male') {
+if (bf > 20) { recommendation='cut'; recReason=`At ${bf}% body fat you'll struggle to build quality muscle and your health markers will suffer. Get lean first — bulk once you're under 15%.`; }
+else if (bf > 15) { recommendation='cut'; recReason=`${bf}% is above the sweet spot for bulking. A cut to ~12% first will improve insulin sensitivity and let you build cleaner muscle.`; }
+else if (bf < 8) { recommendation='bulk'; recReason=`At ${bf}% you're very lean — your body is primed to build muscle. Time to eat more and grow.`; }
+else { recommendation='bulk'; recReason=`${bf}% is the ideal range to start a lean bulk. You have good insulin sensitivity and room to add muscle without excess fat gain.`; }
+} else {
+if (bf > 30) { recommendation='cut'; recReason=`At ${bf}% body fat a cut will significantly improve your health markers and physique. Aim for 22–25% before considering a bulk.`; }
+else if (bf > 25) { recommendation='cut'; recReason=`${bf}% is above optimal for building muscle efficiently. A cut to ~22% first will set you up for a much cleaner bulk.`; }
+else if (bf < 16) { recommendation='bulk'; recReason=`At ${bf}% you're very lean — your body will respond well to a calorie surplus right now.`; }
+else { recommendation='bulk'; recReason=`${bf}% is a great range to begin a lean bulk. You have good hormonal conditions for building muscle.`; }
+}
+} else {
+recommendation = goal;
+recReason = goal === 'recomp'
+? 'Body recomposition works best for beginners and people returning after a break — expect slower but simultaneous fat loss and muscle gain.'
+: `You've chosen to ${goal}. Here's your personalised plan based on your selected aggression level.`;
+}
+
+// ── CALORIE TARGETS via aggression slider ──
+let dailyCals, weeklyChange, changeColor;
+
+if (recommendation === 'recomp') {
+dailyCals = tdee;
+weeklyChange = 0;
+changeColor = '#fbbf24';
+} else {
+const mode = recommendation === 'cut' ? 'cut' : 'bulk';
+const level = aggressionLevels[mode][aggVal - 1];
+if (mode === 'cut') {
+dailyCals = Math.round(tdee * (1 - level.pct));
+weeklyChange = -level.kgWk;
+changeColor = '#7dd3fc';
+} else {
+dailyCals = Math.round(tdee * (1 + level.pct));
+weeklyChange = level.kgWk;
+changeColor = '#4ade80';
+}
+}
+
+const aggressionLabel = recommendation === 'recomp'
+? 'Maintenance'
+: aggressionLevels[recommendation === 'cut' ? 'cut' : 'bulk'][aggVal-1].label;
+
+// ── MACROS ──
+const protein = Math.round(weight * (recommendation === 'cut' ? 2.4 : 1.8));
+const fat = Math.round(dailyCals * 0.25 / 9);
+const carbs = Math.round((dailyCals - protein*4 - fat*9) / 4);
+
+// ── PROJECTION ──
+const totalChange = Math.round(weeklyChange * weeks * 10) / 10;
+const endWeight = Math.round((weight + totalChange) * 10) / 10;
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + weeks * 7);
+const dateStr = targetDate.toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
+
+const deficit = Math.abs(tdee - dailyCals);
+const surplusLabel = recommendation === 'cut'
+? `${deficit} kcal deficit`
+: recommendation === 'bulk'
+? `${deficit} kcal surplus`
+: 'Maintenance calories';
+
+// ── PHASES ──
+const phases = recommendation === 'cut' ? [
+{week:'Weeks 1–2', title:'Adaptation', desc:`Scale weight may fluctuate as your body adjusts glycogen and water. Stay consistent — real fat loss starts here.`},
+{week:'Weeks 3–6', title:'Active Fat Loss', desc:`Expect ~${Math.abs(weeklyChange)}kg/week. Energy may dip slightly — prioritise sleep, keep training intensity high, and hit your protein target daily.`},
+{week:`Weeks 7–${weeks}`, title:'Final Phase', desc:`Losses may slow as you get leaner. Consider a 1-week diet break at maintenance if fatigue spikes. Protein becomes even more critical to retain muscle.`},
+] : recommendation === 'bulk' ? [
+{week:'Weeks 1–2', title:'Adjustment', desc:`Initial weight gain is mostly glycogen and water — don't panic. Your body is loading up for growth.`},
+{week:'Weeks 3–8', title:'Active Growth', desc:`Strength should climb weekly. Aim for progressive overload every session. Expect ~${weeklyChange}kg/week on the scale.`},
+{week:`Weeks 9–${weeks}`, title:'Momentum', desc:`Meaningful size will be accumulating. Monitor body fat — if it exceeds ${gender==='male'?18:28}%, consider a mini cut before continuing.`},
+] : [
+{week:'Weeks 1–4', title:'Baseline', desc:`Track weight and strength consistently. Recomp is slow — judge by the mirror and how your clothes fit, not just the scale.`},
+{week:`Weeks 5–${Math.round(weeks*0.7)}`, title:'Building Momentum', desc:`Protein synthesis and fat oxidation improve together. Strength gains are the primary signal it's working.`},
+{week:`Weeks ${Math.round(weeks*0.7)}–${weeks}`, title:'Visible Progress', desc:`Body composition changes become visible even if scale weight barely moves. Reassess and consider a dedicated cut or bulk.`},
+];
+
+const verdictIcon = recommendation==='cut' ? '📉' : recommendation==='bulk' ? '📈' : '🔄';
+const verdictLabel = recommendation==='cut' ? 'CUT' : recommendation==='bulk' ? 'BULK' : 'RECOMP';
+const verdictColor = recommendation==='cut' ? '#7dd3fc' : recommendation==='bulk' ? '#4ade80' : '#fbbf24';
+
+const phaseCards = phases.map(p => `
+<div style="border:1px solid #1e1e1e;border-radius:6px;padding:1rem;background:#0d0d0d;margin-bottom:0.6rem;">
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:${verdictColor};letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.25rem;">${p.week}</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.04em;margin-bottom:0.3rem;">${p.title}</div>
+<div style="font-size:0.78rem;color:#777;line-height:1.55;">${p.desc}</div>
+</div>`).join('');
+
+setResult('cutbulk', `
+<div style="animation:fadeUp 0.35s cubic-bezier(0.22,1,0.36,1);">
+<!-- VERDICT -->
+<div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #1e1e1e;">
+<div style="font-size:2.5rem;line-height:1;">${verdictIcon}</div>
+<div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:#444;margin-bottom:0.15rem;">Recommendation</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;color:${verdictColor};">${verdictLabel}
+<span style="font-size:1rem;color:#555;margin-left:0.5rem;">${aggressionLabel}</span>
+</div>
+</div>
+</div>
+<div style="font-size:0.82rem;color:#888;line-height:1.6;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #1e1e1e;">${recReason}</div>
+
+<!-- CALORIE TARGET -->
+<div style="display:flex;align-items:baseline;gap:0.5rem;margin-bottom:0.2rem;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;color:${verdictColor};">${dailyCals.toLocaleString()}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:#444;text-transform:uppercase;letter-spacing:0.1em;">kcal/day</div>
+</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#555;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.25rem;">${surplusLabel}</div>
+
+<!-- MACROS -->
+<div style="display:flex;gap:0.6rem;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #1e1e1e;flex-wrap:wrap;">
+<div style="flex:1;min-width:55px;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:6px;padding:0.7rem;text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--accent);line-height:1;">${protein}g</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.55rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;margin-top:0.15rem;">Protein</div>
+</div>
+<div style="flex:1;min-width:55px;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:6px;padding:0.7rem;text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#7dd3fc;line-height:1;">${carbs}g</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.55rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;margin-top:0.15rem;">Carbs</div>
+</div>
+<div style="flex:1;min-width:55px;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:6px;padding:0.7rem;text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#f97316;line-height:1;">${fat}g</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.55rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;margin-top:0.15rem;">Fat</div>
+</div>
+</div>
+
+<!-- PROJECTION -->
+<div class="result-breakdown" style="margin-bottom:1.25rem;">
+<div class="breakdown-row"><span class="breakdown-label">Current Weight</span><span class="breakdown-val">${weight}kg</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Lean Mass</span><span class="breakdown-val">${leanMass}kg</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Weekly Change</span><span class="breakdown-val" style="color:${verdictColor};">${weeklyChange > 0 ? '+':''}${weeklyChange}kg/week</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Projected (${weeks} weeks)</span><span class="breakdown-val highlight">${endWeight}kg</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Target Date</span><span class="breakdown-val">${dateStr}</span></div>
+</div>
+
+<!-- PHASES -->
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:${verdictColor};margin-bottom:0.75rem;">📅 Phase Breakdown</div>
+${phaseCards}
+</div>`);
+showToast('Plan built ✓');
+}
+
+function updateAggressionDisplay() {
+const val = +document.getElementById('cb-aggression').value;
+const goal = document.getElementById('cb-goal')?.value;
+const valEl = document.getElementById('cb-aggression-val');
+const hintEl = document.getElementById('cb-aggression-hint');
+if (!valEl || !hintEl) return;
+
+if (goal === 'recomp') {
+const labels = ['Minimal','Light','Moderate','High','Max'];
+valEl.textContent = labels[val-1];
+hintEl.textContent = 'Recomp works at maintenance calories — focus on training hard and hitting protein.';
+return;
+}
+const mode = goal === 'bulk' ? 'bulk' : 'cut';
+const level = aggressionLevels[mode][val-1];
+valEl.textContent = level.shortLabel;
+const pctDisplay = Math.round(level.pct * 100);
+hintEl.textContent = `~${pctDisplay}% ${mode === 'cut' ? 'deficit' : 'surplus'} · ~${level.kgWk}kg/week · ${level.risk}`;
+}
+
+function updateAggressionLabel() {
+const goal = document.getElementById('cb-goal')?.value;
+const label = document.getElementById('cb-aggression-label');
+if (!label) return;
+label.textContent = goal === 'bulk' ? 'Surplus Aggression' : goal === 'recomp' ? 'Training Intensity' : 'Deficit Aggression';
+updateAggressionDisplay();
+}
+
+
+
+
+
 // ── SCROLL REVEAL ────────────────────
 const revealObserver = new IntersectionObserver((entries) => {
 entries.forEach(e => {
@@ -1881,6 +2715,9 @@ loadInputs('macros');
 loadInputs('orm');
 loadInputs('bodyfat');
 loadInputs('protein');
+loadInputs('strain');
+loadInputs('cutbulk');
+buildVolumeGrid();
 rerender();
 
 </script>
