@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3751443903081311"
-     crossorigin="anonymous"></script>
 <head>
+<!-- AdSense — correctly placed inside <head> -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3751443903081311"
+crossorigin="anonymous"></script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Primary SEO -->
 
-<title>GAINLAB — Free Fitness Calculators for Serious Lifters</title>
+<title>GymCalculator — Free Fitness Calculators for Serious Lifters</title>
 <meta name="description" content="Free fitness calculators for lifters and athletes. TDEE, macros, one rep max, body fat %, protein needs, muscle map exercise guide and budget protein sources. Built for uni students and gym-goers.">
 <meta name="keywords" content="TDEE calculator, macro calculator, one rep max calculator, body fat calculator, protein calculator, fitness tools, gym calculator, bulking calories, cutting macros">
-<meta name="author" content="GAINLAB">
-<link rel="canonical" href="https://gainlab.io/">
+<meta name="author" content="GymCalculator">
+<link rel="canonical" href="https://gymcalculator.co.uk/">
 
 <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://gainlab.io/">
-<meta property="og:title" content="GAINLAB — Free Fitness Calculators">
+<meta property="og:url" content="https://gymcalculator.co.uk/">
+<meta property="og:title" content="GymCalculator — Free Fitness Calculators">
 <meta property="og:description" content="TDEE, macros, one rep max, body fat %, protein needs and more. Science-backed tools for lifters. Free forever.">
-<meta property="og:image" content="https://gainlab.io/og-image.png">
+<meta property="og:image" content="https://gymcalculator.co.uk/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:site_name" content="GAINLAB">
+<meta property="og:site_name" content="GymCalculator">
 
 <!-- Twitter / X Card -->
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://gainlab.io/">
-<meta name="twitter:title" content="GAINLAB — Free Fitness Calculators">
+<meta name="twitter:url" content="https://gymcalculator.co.uk/">
+<meta name="twitter:title" content="GymCalculator — Free Fitness Calculators">
 <meta name="twitter:description" content="TDEE, macros, 1RM, body fat %, protein needs, muscle map. Free tools for serious lifters.">
-<meta name="twitter:image" content="https://gainlab.io/og-image.png">
+<meta name="twitter:image" content="https://gymcalculator.co.uk/og-image.png">
 
 <!-- Favicon — inline SVG as data URI, no external files needed -->
 
@@ -45,8 +47,2732 @@
 {
 "@context": "https://schema.org",
 "@type": "WebApplication",
-"name": "GAINLAB",
-"url": "https://gainlab.io",
+"name": "GymCalculator",
+"url": "https://gymcalculator.co.uk",
+"description": "Free fitness calculators including TDEE, macros, one rep max, body fat percentage and protein needs.",
+"applicationCategory": "HealthApplication",
+"operatingSystem": "Any",
+"offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" }
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+--black: #0a0a0a;
+--white: #f5f2ed;
+--cream: #e8e2d9;
+--accent: #c8f135;
+--accent2: #ff4d1c;
+--mid: #1a1a1a;
+--border: #2a2a2a;
+--text-muted: #666;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: var(--black);
+color: var(--white);
+font-family: 'DM Sans', sans-serif;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+header {
+border-bottom: 1px solid var(--border);
+padding: 0 1.25rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 56px;
+position: sticky;
+top: 0;
+background: rgba(10,10,10,0.96);
+backdrop-filter: blur(16px);
+z-index: 100;
+}
+
+.logo {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.75rem;
+letter-spacing: 0.1em;
+color: var(--accent);
+}
+.logo span { color: var(--white); }
+
+nav { display: flex; gap: 0.15rem; }
+nav button {
+background: none;
+border: none;
+color: var(--text-muted);
+font-family: 'DM Mono', monospace;
+font-size: 0.65rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+padding: 0.45rem 0.6rem;
+cursor: pointer;
+transition: color 0.2s, background 0.2s;
+border-radius: 4px;
+white-space: nowrap;
+}
+nav button:hover, nav button.active {
+color: var(--accent);
+background: rgba(200,241,53,0.08);
+}
+
+/* hide middle nav items on very small screens */
+@media (max-width: 480px) {
+nav button:not(:last-child) { display: none; }
+}
+
+/* ── HERO ── */
+.hero {
+padding: 3.5rem 1.25rem 2rem;
+max-width: 1100px;
+margin: 0 auto;
+}
+@media (min-width: 768px) {
+.hero { padding: 5rem 2rem 3rem; }
+}
+
+.hero-tag {
+font-family: 'DM Mono', monospace;
+font-size: 0.68rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(--accent);
+margin-bottom: 1.25rem;
+display: flex;
+align-items: center;
+gap: 0.75rem;
+}
+.hero-tag::before {
+content: '';
+width: 1.5rem;
+height: 1px;
+background: var(--accent);
+}
+
+h1 {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(3.5rem, 10vw, 8rem);
+line-height: 0.9;
+letter-spacing: 0.02em;
+color: var(--white);
+}
+h1 em { font-style: normal; color: var(--accent); display: block; }
+
+.hero-sub {
+margin-top: 1.25rem;
+color: var(--text-muted);
+font-size: 0.95rem;
+max-width: 500px;
+line-height: 1.6;
+}
+
+/* ── TOOL TABS ── */
+.tool-tabs {
+display: flex;
+gap: 0.4rem;
+padding: 1.5rem 1.25rem 0;
+max-width: 1100px;
+margin: 0 auto;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+scrollbar-width: none;
+flex-wrap: nowrap;
+}
+.tool-tabs::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) {
+.tool-tabs { padding: 2rem 2rem 0; flex-wrap: wrap; }
+}
+
+.tab-btn {
+background: var(--mid);
+border: 1px solid var(--border);
+color: var(--text-muted);
+font-family: 'DM Mono', monospace;
+font-size: 0.7rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+padding: 0.55rem 1.1rem;
+cursor: pointer;
+border-radius: 2px;
+transition: all 0.18s;
+white-space: nowrap;
+flex-shrink: 0;
+}
+.tab-btn:hover { border-color: var(--accent); color: var(--white); }
+.tab-btn.active {
+background: var(--accent);
+border-color: var(--accent);
+color: var(--black);
+font-weight: 600;
+}
+
+/* ── CALCULATOR AREA ── */
+.calc-area {
+max-width: 1100px;
+margin: 0 auto;
+padding: 1.25rem;
+}
+@media (min-width: 768px) {
+.calc-area { padding: 2rem; }
+}
+
+.calculator { display: none; }
+.calculator.active {
+display: block;
+animation: fadeUp 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.calc-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 1rem;
+align-items: start;
+}
+@media (min-width: 640px) {
+.calc-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+}
+
+.calc-panel {
+background: var(--mid);
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 1.5rem;
+transition: border-color 0.2s;
+}
+@media (min-width: 768px) {
+.calc-panel { padding: 2rem; border-radius: 4px; }
+}
+
+.calc-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.8rem;
+letter-spacing: 0.05em;
+margin-bottom: 0.5rem;
+color: var(--white);
+}
+
+.calc-desc {
+font-size: 0.85rem;
+color: var(--text-muted);
+line-height: 1.5;
+margin-bottom: 1.5rem;
+padding-bottom: 1.25rem;
+border-bottom: 1px solid var(--border);
+}
+
+.field { margin-bottom: 1.1rem; }
+
+label {
+display: block;
+font-family: 'DM Mono', monospace;
+font-size: 0.68rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(--text-muted);
+margin-bottom: 0.45rem;
+}
+
+input[type=number], select {
+width: 100%;
+background: var(--black);
+border: 1px solid var(--border);
+color: var(--white);
+font-family: 'DM Sans', sans-serif;
+font-size: 1rem;
+padding: 0.8rem 1rem;
+border-radius: 6px;
+outline: none;
+transition: border-color 0.2s, box-shadow 0.2s;
+appearance: none;
+-webkit-appearance: none;
+}
+input[type=number]:focus, select:focus {
+border-color: var(--accent);
+box-shadow: 0 0 0 3px rgba(200,241,53,0.08);
+}
+select option { background: var(--black); }
+
+.radio-group { display: flex; gap: 0.5rem; }
+.radio-group label {
+flex: 1;
+background: var(--black);
+border: 1px solid var(--border);
+border-radius: 6px;
+padding: 0.65rem;
+cursor: pointer;
+text-align: center;
+font-size: 0.75rem;
+letter-spacing: 0.05em;
+transition: all 0.18s;
+margin: 0;
+}
+.radio-group input[type=radio] { display: none; }
+.radio-group input[type=radio]:checked + label {
+background: var(--accent);
+border-color: var(--accent);
+color: var(--black);
+font-weight: 600;
+}
+
+.calc-btn {
+width: 100%;
+background: var(--accent);
+border: none;
+color: var(--black);
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.3rem;
+letter-spacing: 0.1em;
+padding: 0.95rem;
+cursor: pointer;
+border-radius: 6px;
+margin-top: 0.5rem;
+transition: all 0.18s;
+position: relative;
+overflow: hidden;
+}
+.calc-btn::after {
+content: '';
+position: absolute;
+inset: 0;
+background: rgba(255,255,255,0);
+transition: background 0.18s;
+}
+.calc-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(200,241,53,0.25); }
+.calc-btn:hover::after { background: rgba(255,255,255,0.08); }
+.calc-btn:active { transform: translateY(0); box-shadow: none; }
+
+/* ── RESULTS ── */
+.result-panel {
+background: var(--black);
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 1.75rem;
+min-height: 280px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+transition: border-color 0.3s;
+}
+@media (min-width: 768px) {
+.result-panel { padding: 2rem; min-height: 300px; border-radius: 4px; }
+}
+.result-panel.has-result { border-color: rgba(200,241,53,0.2); }
+
+/* ── EMPTY STATE ── */
+.result-empty {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 0.75rem;
+text-align: center;
+padding: 1.5rem 0;
+}
+.empty-icon {
+width: 48px;
+height: 48px;
+border: 1px solid var(--border);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.4rem;
+color: #333;
+background: #111;
+animation: emptyPulse 3s ease-in-out infinite;
+}
+@keyframes emptyPulse {
+0%, 100% { opacity: 0.5; transform: scale(1); }
+50% { opacity: 1; transform: scale(1.04); }
+}
+.empty-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.1rem;
+letter-spacing: 0.1em;
+color: #333;
+}
+.empty-hint {
+font-family: 'DM Mono', monospace;
+font-size: 0.62rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: #2a2a2a;
+}
+
+/* ── RESULT CONTENT ── */
+.result-inner {
+animation: resultIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes resultIn {
+from { opacity: 0; transform: translateY(12px) scale(0.98); }
+to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.result-number {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(3.5rem, 8vw, 5rem);
+line-height: 1;
+color: var(--accent);
+letter-spacing: 0.02em;
+}
+.result-unit {
+font-family: 'DM Mono', monospace;
+font-size: 0.78rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(--text-muted);
+margin-top: 0.2rem;
+margin-bottom: 1.25rem;
+}
+.result-label {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.05rem;
+letter-spacing: 0.1em;
+color: var(--white);
+margin-bottom: 0.85rem;
+}
+.result-breakdown {
+display: flex;
+flex-direction: column;
+gap: 0.55rem;
+border-top: 1px solid var(--border);
+padding-top: 1.1rem;
+margin-top: 0.4rem;
+}
+.breakdown-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 0.88rem;
+}
+.breakdown-label {
+color: var(--text-muted);
+font-family: 'DM Mono', monospace;
+font-size: 0.7rem;
+letter-spacing: 0.05em;
+text-transform: uppercase;
+}
+.breakdown-val {
+font-weight: 600;
+color: var(--white);
+font-family: 'DM Mono', monospace;
+font-size: 0.85rem;
+}
+.breakdown-val.highlight { color: var(--accent); }
+
+.bar-container {
+width: 100%;
+height: 5px;
+background: var(--border);
+border-radius: 3px;
+overflow: hidden;
+margin-top: 0.3rem;
+}
+.bar-fill {
+height: 100%;
+background: var(--accent);
+border-radius: 3px;
+width: 0;
+transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── STATS STRIP ── */
+.stats-strip {
+border-top: 1px solid var(--border);
+border-bottom: 1px solid var(--border);
+display: flex;
+overflow-x: auto;
+scrollbar-width: none;
+max-width: 1100px;
+margin: 2.5rem auto 0;
+padding: 0 1.25rem;
+}
+.stats-strip::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) {
+.stats-strip { padding: 0; margin: 3rem auto 0; }
+}
+.stat-item {
+flex: 1;
+min-width: 100px;
+padding: 1.25rem 1rem;
+border-right: 1px solid var(--border);
+text-align: center;
+flex-shrink: 0;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 2.2rem;
+color: var(--accent);
+line-height: 1;
+}
+.stat-lbl {
+font-family: 'DM Mono', monospace;
+font-size: 0.62rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(--text-muted);
+margin-top: 0.3rem;
+}
+
+/* ── FOOTER ── */
+footer {
+margin-top: 4rem;
+border-top: 1px solid var(--border);
+padding: 2rem 1.25rem;
+text-align: center;
+font-family: 'DM Mono', monospace;
+font-size: 0.68rem;
+letter-spacing: 0.1em;
+color: var(--border);
+text-transform: uppercase;
+}
+footer span { color: var(--accent); }
+
+/* ── TICKER ── */
+.ticker {
+background: var(--accent);
+color: var(--black);
+font-family: 'Bebas Neue', sans-serif;
+letter-spacing: 0.15em;
+font-size: 0.85rem;
+padding: 0.35rem 0;
+overflow: hidden;
+white-space: nowrap;
+}
+.ticker-inner {
+display: inline-block;
+animation: ticker 22s linear infinite;
+}
+@keyframes ticker {
+from { transform: translateX(0); }
+to { transform: translateX(-50%); }
+}
+
+/* ── PILL ── */
+.pill {
+display: inline-block;
+background: rgba(200,241,53,0.1);
+border: 1px solid rgba(200,241,53,0.25);
+color: var(--accent);
+font-family: 'DM Mono', monospace;
+font-size: 0.65rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+padding: 0.25rem 0.6rem;
+border-radius: 2px;
+margin-right: 0.4rem;
+margin-bottom: 0.4rem;
+}
+
+/* ── RANGE SLIDER ── */
+.slider-field { margin-bottom:1.25rem; }
+.slider-field > label { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; }
+.slider-val {
+font-family:'Bebas Neue',sans-serif;
+font-size:1.1rem;
+color:var(--accent);
+letter-spacing:0.04em;
+min-width:3rem;
+text-align:right;
+}
+input[type=range] {
+-webkit-appearance:none; appearance:none;
+width:100%; height:4px;
+background:var(--border); border-radius:2px;
+outline:none; cursor:pointer; border:none; padding:0;
+}
+input[type=range]::-webkit-slider-thumb {
+-webkit-appearance:none;
+width:20px; height:20px; border-radius:50%;
+background:var(--accent); cursor:pointer;
+box-shadow:0 0 0 3px rgba(200,241,53,0.2);
+transition:box-shadow 0.2s;
+}
+input[type=range]:hover::-webkit-slider-thumb { box-shadow:0 0 0 6px rgba(200,241,53,0.15); }
+input[type=range]::-moz-range-thumb {
+width:20px; height:20px; border-radius:50%;
+background:var(--accent); cursor:pointer; border:none;
+box-shadow:0 0 0 3px rgba(200,241,53,0.2);
+}
+.slider-markers {
+display:flex; justify-content:space-between; margin-top:0.5rem;
+}
+.slider-markers span {
+font-family:'DM Mono',monospace; font-size:0.58rem;
+color:#333; letter-spacing:0.06em; text-transform:uppercase;
+}
+
+/* ── LOADING SPINNER for results ── */
+.result-loading {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+animation: fadeUp 0.2s ease;
+}
+.spinner {
+width: 32px;
+height: 32px;
+border: 2px solid var(--border);
+border-top-color: var(--accent);
+border-radius: 50%;
+animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner-label {
+font-family: 'DM Mono', monospace;
+font-size: 0.65rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(--text-muted);
+}
+
+/* ── SECTION HEADINGS (protein guide, muscle map) ── */
+@media (max-width: 640px) {
+#protein-guide, #muscle-map-section {
+padding: 0 1.25rem !important;
+}
+}
+
+/* ── MUSCLE PILLS ── */
+.muscle-pill:hover { border-color: #444 !important; color: #ccc !important; background: #161616 !important; }
+.muscle-pill.active {
+background: var(--accent) !important;
+border-color: var(--accent) !important;
+color: var(--black) !important;
+font-weight: 600;
+box-shadow: 0 0 14px rgba(200,241,53,0.3);
+}
+
+/* ── FIELD VALIDATION ── */
+.field-error-msg {
+font-family: 'DM Mono', monospace;
+font-size: 0.65rem;
+letter-spacing: 0.06em;
+color: #f87171;
+margin-top: 0.35rem;
+display: none;
+animation: fadeUp 0.2s ease;
+}
+.field-error input,
+.field-error select {
+border-color: #f87171 !important;
+box-shadow: 0 0 0 3px rgba(248,113,113,0.1) !important;
+}
+.field-error .field-error-msg { display: block; }
+
+/* ── TOAST NOTIFICATION ── */
+#toast {
+position: fixed;
+bottom: 1.5rem;
+left: 50%;
+transform: translateX(-50%) translateY(80px);
+background: var(--mid);
+border: 1px solid var(--border);
+border-left: 3px solid var(--accent);
+color: var(--white);
+font-family: 'DM Mono', monospace;
+font-size: 0.75rem;
+letter-spacing: 0.06em;
+padding: 0.85rem 1.5rem;
+border-radius: 6px;
+z-index: 999;
+box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease;
+opacity: 0;
+white-space: nowrap;
+pointer-events: none;
+}
+#toast.show {
+transform: translateX(-50%) translateY(0);
+opacity: 1;
+}
+#toast.error { border-left-color: #f87171; }
+
+/* ── MOBILE OVERFLOW FIXES ── */
+@media (max-width: 480px) {
+h1 { font-size: clamp(3rem, 16vw, 5rem); }
+h2 { font-size: clamp(2rem, 12vw, 3.5rem) !important; }
+.hero { padding: 2.5rem 1rem 1.5rem; }
+.calc-area { padding: 1rem; }
+.calc-panel { padding: 1.25rem; }
+.result-panel { padding: 1.25rem; }
+.result-number { font-size: clamp(2.8rem, 14vw, 4rem); }
+.tool-tabs { padding: 1rem 1rem 0; }
+.breakdown-label { font-size: 0.62rem; }
+.breakdown-val { font-size: 0.78rem; }
+}
+
+/* ── SAVED BADGE ── */
+.saved-badge {
+display: inline-flex;
+align-items: center;
+gap: 0.3rem;
+font-family: 'DM Mono', monospace;
+font-size: 0.6rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(--accent);
+opacity: 0;
+transition: opacity 0.3s;
+margin-left: 0.75rem;
+}
+.saved-badge.visible { opacity: 1; }
+
+
+.section-reveal {
+opacity: 0;
+transform: translateY(24px);
+transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.section-reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- TICKER -->
+
+<div class="ticker">
+<span class="ticker-inner">
+TDEE CALCULATOR &nbsp;·&nbsp; MACRO SPLITTER &nbsp;·&nbsp; ONE REP MAX &nbsp;·&nbsp; BODY FAT % &nbsp;·&nbsp; BMI &nbsp;·&nbsp; PROTEIN NEEDS &nbsp;·&nbsp;
+TDEE CALCULATOR &nbsp;·&nbsp; MACRO SPLITTER &nbsp;·&nbsp; ONE REP MAX &nbsp;·&nbsp; BODY FAT % &nbsp;·&nbsp; BMI &nbsp;·&nbsp; PROTEIN NEEDS &nbsp;·&nbsp;
+</span>
+</div>
+
+<!-- HEADER -->
+
+<header>
+<div class="logo">GAIN<span>LAB</span></div>
+<nav>
+<button class="active">Calculators</button>
+<button onclick="scrollToGuide()">Protein Guide</button>
+<button onclick="scrollToMuscleMap()">Muscle Map</button>
+</nav>
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+<div class="hero-tag">Free Fitness Tools</div>
+<h1>KNOW YOUR<em>NUMBERS.</em></h1>
+<p class="hero-sub">Science-backed calculators for people who take training seriously. No fluff, just data.</p>
+</div>
+
+<!-- STATS STRIP -->
+
+<div class="stats-strip">
+<div class="stat-item">
+<div class="stat-num">5</div>
+<div class="stat-lbl">Calculators</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">100%</div>
+<div class="stat-lbl">Free</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">0</div>
+<div class="stat-lbl">BS Metrics</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">∞</div>
+<div class="stat-lbl">Gainz</div>
+</div>
+</div>
+
+<!-- TOOL TABS -->
+
+<div class="tool-tabs">
+<button class="tab-btn active" onclick="showCalc('tdee', this)">TDEE</button>
+<button class="tab-btn" onclick="showCalc('macros', this)">Macros</button>
+<button class="tab-btn" onclick="showCalc('orm', this)">1 Rep Max</button>
+<button class="tab-btn" onclick="showCalc('bodyfat', this)">Body Fat %</button>
+<button class="tab-btn" onclick="showCalc('protein', this)">Protein Needs</button>
+<button class="tab-btn" onclick="showCalc('strain', this)">Muscle Strain</button>
+<button class="tab-btn" onclick="showCalc('volume', this)">Volume</button>
+<button class="tab-btn" onclick="showCalc('cutbulk', this)">Cut / Bulk</button>
+</div>
+
+<!-- CALCULATORS -->
+
+<div class="calc-area">
+
+<!-- TDEE -->
+
+<div class="calculator active" id="calc-tdee">
+<div class="calc-grid">
+<div class="calc-panel">
+<div class="calc-title">TDEE Calculator</div>
+<div class="calc-desc">Total Daily Energy Expenditure — how many calories your body burns in a day. The foundation of every diet and bulk.</div>
+
+```
+<div class="field">
+<label>Gender</label>
+<div class="radio-group">
+<input type="radio" name="tdee-gender" id="tg-m" value="male" checked>
+<label for="tg-m">Male</label>
+<input type="radio" name="tdee-gender" id="tg-f" value="female">
+<label for="tg-f">Female</label>
+</div>
+</div>
+<div class="field">
+<label>Age</label>
+<input type="number" id="tdee-age" placeholder="e.g. 20" min="15" max="80">
+</div>
+<div class="field">
+<label>Weight (kg)</label>
+<input type="number" id="tdee-weight" placeholder="e.g. 75" min="30">
+</div>
+<div class="field">
+<label>Height (cm)</label>
+<input type="number" id="tdee-height" placeholder="e.g. 178" min="100">
+</div>
+<div class="field">
+<label>Activity Level</label>
+<select id="tdee-activity">
+<option value="1.2">Sedentary (desk job, no exercise)</option>
+<option value="1.375">Lightly active (1–3 days/week)</option>
+<option value="1.55" selected>Moderately active (3–5 days/week)</option>
+<option value="1.725">Very active (6–7 days/week)</option>
+<option value="1.9">Extremely active (athlete / physical job)</option>
+</select>
+</div>
+<button class="calc-btn" onclick="calcTDEE()">CALCULATE</button>
+</div>
+
+<div class="result-panel" id="result-tdee">
+<div class="result-empty">
+<div class="empty-icon">⚡</div>
+<div class="empty-title">Your Daily Burn</div>
+<div class="empty-hint">fill in stats above</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+<!-- MACROS -->
+
+<div class="calculator" id="calc-macros">
+<div class="calc-grid">
+<div class="calc-panel">
+<div class="calc-title">Macro Splitter</div>
+<div class="calc-desc">Break your daily calories into protein, carbs, and fat based on your goal. Built on evidence-based ratios.</div>
+
+```
+<div class="field">
+<label>Daily Calories (kcal)</label>
+<input type="number" id="m-cals" placeholder="e.g. 2500">
+</div>
+<div class="field">
+<label>Goal</label>
+<select id="m-goal">
+<option value="bulk">Lean Bulk</option>
+<option value="maintain" selected>Maintain / Recomp</option>
+<option value="cut">Cut (Fat Loss)</option>
+</select>
+</div>
+<div class="field">
+<label>Body Weight (kg)</label>
+<input type="number" id="m-weight" placeholder="e.g. 75">
+</div>
+<button class="calc-btn" onclick="calcMacros()">SPLIT MY MACROS</button>
+</div>
+
+<div class="result-panel" id="result-macros">
+<div class="result-empty">
+<div class="empty-icon">🥗</div>
+<div class="empty-title">Your Macro Split</div>
+<div class="empty-hint">fill in calories above</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+<!-- ONE REP MAX -->
+
+<div class="calculator" id="calc-orm">
+<div class="calc-grid">
+<div class="calc-panel">
+<div class="calc-title">1 Rep Max</div>
+<div class="calc-desc">Estimate your one-rep max from a recent working set. Uses the Epley formula — accurate within 5% for most lifters.</div>
+
+```
+<div class="field">
+<label>Lift</label>
+<select id="orm-lift">
+<option>Squat</option>
+<option>Bench Press</option>
+<option>Deadlift</option>
+<option>Overhead Press</option>
+<option>Other</option>
+</select>
+</div>
+<div class="field">
+<label>Weight Lifted (kg)</label>
+<input type="number" id="orm-weight" placeholder="e.g. 100">
+</div>
+<div class="field">
+<label>Reps Completed</label>
+<input type="number" id="orm-reps" placeholder="e.g. 5" min="1" max="20">
+</div>
+<button class="calc-btn" onclick="calcORM()">CALCULATE 1RM</button>
+</div>
+
+<div class="result-panel" id="result-orm">
+<div class="result-empty">
+<div class="empty-icon">🏋️</div>
+<div class="empty-title">Your Max Lift</div>
+<div class="empty-hint">enter weight & reps</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+<!-- BODY FAT -->
+
+<div class="calculator" id="calc-bodyfat">
+<div class="calc-grid">
+<div class="calc-panel">
+<div class="calc-title">Body Fat %</div>
+<div class="calc-desc">Estimate body fat using the US Navy tape method. All you need is a tape measure — no calipers required.</div>
+
+```
+<div class="field">
+<label>Gender</label>
+<div class="radio-group">
+<input type="radio" name="bf-gender" id="bfg-m" value="male" checked onchange="toggleBFWaist()">
+<label for="bfg-m">Male</label>
+<input type="radio" name="bf-gender" id="bfg-f" value="female" onchange="toggleBFWaist()">
+<label for="bfg-f">Female</label>
+</div>
+</div>
+<div class="field">
+<label>Height (cm)</label>
+<input type="number" id="bf-height" placeholder="e.g. 178">
+</div>
+<div class="field">
+<label>Neck circumference (cm)</label>
+<input type="number" id="bf-neck" placeholder="e.g. 38">
+</div>
+<div class="field">
+<label>Waist circumference (cm)</label>
+<input type="number" id="bf-waist" placeholder="e.g. 82">
+</div>
+<div class="field" id="bf-hip-field" style="display:none">
+<label>Hip circumference (cm)</label>
+<input type="number" id="bf-hip" placeholder="e.g. 95">
+</div>
+<button class="calc-btn" onclick="calcBodyFat()">CALCULATE BODY FAT</button>
+</div>
+
+<div class="result-panel" id="result-bodyfat">
+<div class="result-empty">
+<div class="empty-icon">📏</div>
+<div class="empty-title">Your Body Composition</div>
+<div class="empty-hint">enter measurements</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+<!-- PROTEIN NEEDS -->
+
+<div class="calculator" id="calc-protein">
+<div class="calc-grid">
+<div class="calc-panel">
+<div class="calc-title">Protein Needs</div>
+<div class="calc-desc">How much protein do you actually need? Based on peer-reviewed sports nutrition guidelines, not bro science.</div>
+
+```
+<div class="field">
+<label>Body Weight (kg)</label>
+<input type="number" id="prot-weight" placeholder="e.g. 75">
+</div>
+<div class="field">
+<label>Goal</label>
+<select id="prot-goal">
+<option value="build">Build Muscle (bulk)</option>
+<option value="maintain" selected>Maintain Muscle</option>
+<option value="cut">Preserve Muscle (cutting)</option>
+<option value="athlete">Endurance Athlete</option>
+</select>
+</div>
+<div class="field">
+<label>Training Frequency</label>
+<select id="prot-freq">
+<option value="low">1–2 days/week</option>
+<option value="mid" selected>3–4 days/week</option>
+<option value="high">5+ days/week</option>
+</select>
+</div>
+<button class="calc-btn" onclick="calcProtein()">CALCULATE</button>
+</div>
+
+<div class="result-panel" id="result-protein">
+<div class="result-empty">
+<div class="empty-icon">💪</div>
+<div class="empty-title">Your Protein Target</div>
+<div class="empty-hint">enter bodyweight</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+<!-- MUSCLE STRAIN -->
+
+<div class="calculator" id="calc-strain">
+<div class="calc-grid">
+<div class="calc-panel">
+<div class="calc-title">Muscle Strain Score</div>
+<div class="calc-desc">Enter your workout details to get a fatigue score and personalised recovery time estimate based on volume, intensity and muscle group.</div>
+
+```
+<div class="field">
+<label>Muscle Group Trained</label>
+<select id="str-muscle">
+<option value="chest">Chest</option>
+<option value="back">Back</option>
+<option value="shoulders">Shoulders</option>
+<option value="biceps">Biceps</option>
+<option value="triceps">Triceps</option>
+<option value="quads">Quads</option>
+<option value="hamstrings">Hamstrings</option>
+<option value="glutes">Glutes</option>
+<option value="calves">Calves</option>
+<option value="abs">Abs / Core</option>
+<option value="traps">Traps</option>
+<option value="forearms">Forearms</option>
+</select>
+</div>
+
+<div class="field">
+<label>Number of Sets</label>
+<input type="number" id="str-sets" placeholder="e.g. 4">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Reps Per Set</label>
+<input type="number" id="str-reps" placeholder="e.g. 10">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Weight Used (kg)</label>
+<input type="number" id="str-weight" placeholder="e.g. 80">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Estimated 1 Rep Max (kg)</label>
+<input type="number" id="str-orm" placeholder="e.g. 100">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Training Experience</label>
+<select id="str-exp">
+<option value="beginner">Beginner (under 1 year)</option>
+<option value="intermediate" selected>Intermediate (1–3 years)</option>
+<option value="advanced">Advanced (3+ years)</option>
+</select>
+</div>
+
+<div class="field">
+<label>How did it feel?</label>
+<select id="str-rir">
+<option value="easy">Easy — plenty left in the tank</option>
+<option value="moderate" selected>Moderate — challenging but controlled</option>
+<option value="hard">Hard — near failure on last sets</option>
+<option value="maximal">Maximal — went to failure</option>
+</select>
+</div>
+
+<button class="calc-btn" onclick="calcStrain()">CALCULATE STRAIN</button>
+</div>
+
+<div class="result-panel" id="result-strain">
+<div class="result-empty">
+<div class="empty-icon">🔥</div>
+<div class="empty-title">Your Strain Score</div>
+<div class="empty-hint">enter workout details</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+<!-- VOLUME CALCULATOR -->
+
+<div class="calculator" id="calc-volume">
+<div style="max-width:100%;">
+<div class="calc-panel" style="margin-bottom:1.25rem;">
+<div class="calc-title">Weekly Volume Calculator</div>
+<div class="calc-desc">Enter your weekly sets per muscle group. We'll tell you if you're under-training, in the optimal hypertrophy range, or overreaching — based on sports science literature.</div>
+<div style="display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;">
+<div class="field" style="margin:0;flex:1;min-width:160px;">
+<label>Experience Level</label>
+<select id="vol-exp" onchange="updateVolumeRanges()">
+<option value="beginner">Beginner (under 1 year)</option>
+<option value="intermediate" selected>Intermediate (1–3 years)</option>
+<option value="advanced">Advanced (3+ years)</option>
+</select>
+</div>
+<button class="calc-btn" style="margin-top:1.4rem;width:auto;padding:0.75rem 2rem;flex-shrink:0;" onclick="calcVolume()">ANALYSE VOLUME</button>
+</div>
+</div>
+
+```
+<!-- MUSCLE INPUT GRID -->
+<div id="vol-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.75rem;margin-bottom:1.25rem;"></div>
+
+<!-- RESULTS -->
+<div id="result-volume">
+<div style="border:1px solid #1e1e1e;border-radius:8px;padding:2.5rem;text-align:center;background:#0d0d0d;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#1e1e1e;line-height:1;margin-bottom:0.5rem;">↑</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.1em;color:#222;">ENTER YOUR WEEKLY SETS ABOVE</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#1e1e1e;text-transform:uppercase;letter-spacing:0.1em;margin-top:0.4rem;">then hit analyse volume</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+<!-- CUT / BULK PLANNER -->
+
+<div class="calculator" id="calc-cutbulk">
+<div class="calc-grid">
+<div class="calc-panel">
+<div class="calc-title">Cut / Bulk Planner</div>
+<div class="calc-desc">Enter your stats for a personalised plan — daily calories, weekly progress, target date, and phase breakdown. Use the aggression slider to dial in how fast you want to move.</div>
+
+```
+<div class="field">
+<label>Gender</label>
+<div class="radio-group">
+<input type="radio" name="cb-gender" id="cbg-m" value="male" checked>
+<label for="cbg-m">Male</label>
+<input type="radio" name="cb-gender" id="cbg-f" value="female">
+<label for="cbg-f">Female</label>
+</div>
+</div>
+
+<div class="field">
+<label>Current Weight (kg)</label>
+<input type="number" id="cb-weight" placeholder="e.g. 80">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Current Body Fat %</label>
+<input type="number" id="cb-bf" placeholder="e.g. 18">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Your TDEE (kcal/day)</label>
+<input type="number" id="cb-tdee" placeholder="e.g. 2500">
+<div class="field-error-msg"></div>
+</div>
+
+<div class="field">
+<label>Goal</label>
+<select id="cb-goal" onchange="updateAggressionLabel()">
+<option value="auto">Tell me what I should do</option>
+<option value="cut">I want to cut (lose fat)</option>
+<option value="bulk">I want to bulk (build muscle)</option>
+<option value="recomp">I want to recomp (both)</option>
+</select>
+</div>
+
+<div class="field">
+<label>Training Experience</label>
+<select id="cb-exp">
+<option value="beginner">Beginner (under 1 year)</option>
+<option value="intermediate" selected>Intermediate (1–3 years)</option>
+<option value="advanced">Advanced (3+ years)</option>
+</select>
+</div>
+
+<div class="field">
+<label>Timeframe</label>
+<select id="cb-weeks">
+<option value="8">8 weeks</option>
+<option value="12" selected>12 weeks</option>
+<option value="16">16 weeks</option>
+<option value="24">24 weeks</option>
+</select>
+</div>
+
+<!-- AGGRESSION SLIDER -->
+<div class="slider-field">
+<label>
+<span id="cb-aggression-label">Deficit Aggression</span>
+<span class="slider-val" id="cb-aggression-val">Moderate</span>
+</label>
+<input type="range" id="cb-aggression" min="1" max="5" value="3"
+oninput="updateAggressionDisplay()">
+<div class="slider-markers">
+<span>Slow &amp; Steady</span>
+<span>Moderate</span>
+<span>Aggressive</span>
+</div>
+<div id="cb-aggression-hint" style="margin-top:0.6rem;font-family:'DM Mono',monospace;font-size:0.62rem;color:#555;letter-spacing:0.04em;line-height:1.5;">
+~20% deficit · ~0.5kg/week · Minimal muscle loss risk
+</div>
+</div>
+
+<button class="calc-btn" onclick="calcCutBulk()">BUILD MY PLAN</button>
+</div>
+
+<div class="result-panel" id="result-cutbulk">
+<div class="result-empty">
+<div class="empty-icon">📈</div>
+<div class="empty-title">Your Personalised Plan</div>
+<div class="empty-hint">enter your stats above</div>
+</div>
+</div>
+</div>
+```
+
+</div>
+
+</div>
+
+<div id="protein-guide" class="section-reveal" style="max-width:1100px; margin: 4rem auto 0; padding: 0 2rem;">
+
+<div style="border-top: 1px solid var(--border); padding-top: 3rem;">
+<div class="hero-tag" style="margin-bottom:1rem">Uni Student Guide</div>
+<h2 style="font-family:'Bebas Neue',sans-serif; font-size: clamp(2.5rem,6vw,5rem); line-height:0.95; letter-spacing:0.03em; margin-bottom:0.75rem">
+BEST PROTEIN SOURCES<br><span style="color:var(--accent)">ON A BUDGET</span>
+</h2>
+<p style="color:var(--text-muted); font-size:0.9rem; max-width:580px; line-height:1.7; margin-bottom:2.5rem">
+Ranked by cost per 10g of protein. Prices based on UK supermarket averages (Tesco/Asda/Lidl). Each card shows protein content, key micronutrients, and a student tip.
+</p>
+
+```
+<!-- FILTER TABS -->
+<div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:2rem;">
+<button class="tab-btn active" onclick="filterFood('all', this)">All</button>
+<button class="tab-btn" onclick="filterFood('animal', this)">🥩 Animal</button>
+<button class="tab-btn" onclick="filterFood('plant', this)">🌱 Plant-Based</button>
+<button class="tab-btn" onclick="filterFood('dairy', this)">🥛 Dairy</button>
+<button class="tab-btn" onclick="filterFood('budget', this)">💰 Under 20p/10g</button>
+</div>
+
+<!-- SORT BAR -->
+<div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+<span style="font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted)">Sort by:</span>
+<button class="tab-btn active" id="sort-cost" onclick="sortFood('cost', this)" style="padding:0.4rem 0.9rem; font-size:0.65rem;">Cost ↑</button>
+<button class="tab-btn" id="sort-protein" onclick="sortFood('protein', this)" style="padding:0.4rem 0.9rem; font-size:0.65rem;">Protein ↑</button>
+<button class="tab-btn" id="sort-score" onclick="sortFood('score', this)" style="padding:0.4rem 0.9rem; font-size:0.65rem;">Overall Score ↓</button>
+</div>
+
+<!-- CARDS GRID -->
+<div id="food-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:1rem; margin-bottom:3rem;"></div>
+
+<!-- COMPARISON TABLE -->
+<div style="border: 1px solid var(--border); border-radius:4px; overflow:hidden; margin-bottom: 4rem;">
+<div style="background:var(--mid); padding:1.25rem 1.5rem; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem;">
+<span style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:0.05em;">Full Comparison Table</span>
+<div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+<div style="display:flex;gap:0.6rem;align-items:center;">
+<span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#666;text-transform:uppercase;letter-spacing:0.08em;">Cost:</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#4ade80;">●</span><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#666;">≤14p</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#fbbf24;">●</span><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#666;">15–20p</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#f87171;">●</span><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#666;">21p+</span>
+</div>
+<div style="display:flex;gap:0.6rem;align-items:center;">
+<span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#666;text-transform:uppercase;letter-spacing:0.08em;">Type:</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#fb923c;">●</span><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#666;">Animal</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#4ade80;">●</span><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#666;">Plant</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#7dd3fc;">●</span><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#666;">Dairy</span>
+</div>
+</div>
+</div>
+<div style="overflow-x:auto;">
+<table id="food-table" style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+<thead>
+<tr style="background:#111; border-bottom:1px solid var(--border);">
+<th style="text-align:left; padding:0.85rem 1.25rem; font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); white-space:nowrap;">Food</th>
+<th style="text-align:right; padding:0.85rem 1rem; font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); white-space:nowrap;">Protein/100g</th>
+<th style="text-align:right; padding:0.85rem 1rem; font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); white-space:nowrap;">Cost/10g prot</th>
+<th style="text-align:center; padding:0.85rem 1rem; font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); white-space:nowrap;">Score</th>
+<th style="text-align:left; padding:0.85rem 1.25rem; font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted);">Key Micros</th>
+</tr>
+</thead>
+<tbody id="table-body"></tbody>
+</table>
+</div>
+</div>
+```
+
+</div>
+</div>
+
+<!-- MUSCLE MAP -->
+
+<div id="muscle-map-section" class="section-reveal" style="max-width:1100px; margin: 4rem auto 0; padding: 0 2rem;">
+<div style="border-top: 1px solid var(--border); padding-top: 3rem;">
+<div class="hero-tag" style="margin-bottom:1rem">Interactive Guide</div>
+<h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(2.5rem,6vw,5rem); line-height:0.95; letter-spacing:0.03em; margin-bottom:0.75rem;">
+MUSCLE MAP<br><span style="color:var(--accent)">EXERCISE GUIDE</span>
+</h2>
+<p style="color:var(--text-muted); font-size:0.9rem; max-width:580px; line-height:1.7; margin-bottom:2.5rem;">
+Select a muscle group — see the best exercises ranked for hypertrophy and strength, with optimal rep ranges and coaching cues.
+</p>
+
+```
+<!-- MUSCLE PILL SELECTOR -->
+<div style="margin-bottom:2.5rem;">
+<div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#444;margin-bottom:1rem;">Select Muscle Group</div>
+
+<div style="margin-bottom:0.75rem;">
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#333;margin-bottom:0.5rem;">Upper Body — Push</div>
+<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+<button id="pill-chest" class="muscle-pill" onclick="selectMuscle('chest')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Chest</button>
+<button id="pill-shoulders" class="muscle-pill" onclick="selectMuscle('shoulders')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Shoulders</button>
+<button id="pill-triceps" class="muscle-pill" onclick="selectMuscle('triceps')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Triceps</button>
+</div>
+</div>
+
+<div style="margin-bottom:0.75rem;">
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#333;margin-bottom:0.5rem;">Upper Body — Pull</div>
+<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+<button id="pill-back" class="muscle-pill" onclick="selectMuscle('back')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Back</button>
+<button id="pill-biceps" class="muscle-pill" onclick="selectMuscle('biceps')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Biceps</button>
+<button id="pill-traps" class="muscle-pill" onclick="selectMuscle('traps')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Traps</button>
+<button id="pill-forearms" class="muscle-pill" onclick="selectMuscle('forearms')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Forearms</button>
+</div>
+</div>
+
+<div style="margin-bottom:0.75rem;">
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#333;margin-bottom:0.5rem;">Core</div>
+<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+<button id="pill-abs" class="muscle-pill" onclick="selectMuscle('abs')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Abs & Core</button>
+</div>
+</div>
+
+<div>
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#333;margin-bottom:0.5rem;">Lower Body</div>
+<div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+<button id="pill-quads" class="muscle-pill" onclick="selectMuscle('quads')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Quads</button>
+<button id="pill-hamstrings" class="muscle-pill" onclick="selectMuscle('hamstrings')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Hamstrings</button>
+<button id="pill-glutes" class="muscle-pill" onclick="selectMuscle('glutes')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Glutes</button>
+<button id="pill-calves" class="muscle-pill" onclick="selectMuscle('calves')" style="background:#111;border:1px solid #2a2a2a;color:#888;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;transition:all 0.18s;">Calves</button>
+</div>
+</div>
+</div>
+
+<!-- EXERCISE OUTPUT -->
+<div id="exercise-panel" style="margin-bottom:4rem;">
+<div style="border:1px solid #1e1e1e;border-radius:8px;padding:3rem 2rem;text-align:center;background:#0d0d0d;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:4rem;color:#1e1e1e;line-height:1;margin-bottom:0.75rem;">↑</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.1em;color:#222;">SELECT A MUSCLE GROUP ABOVE</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#2a2a2a;letter-spacing:0.1em;text-transform:uppercase;margin-top:0.5rem;">12 muscle groups · ranked by science</div>
+</div>
+</div>
+```
+
+</div>
+</div>
+
+<style>
+.muscle-pill:hover { border-color: #444 !important; color: #ccc !important; background: #161616 !important; }
+.muscle-pill.active { background: var(--accent) !important; border-color: var(--accent) !important; color: var(--black) !important; font-weight: 600; box-shadow: 0 0 12px rgba(200,241,53,0.3); }
+</style>
+
+<footer>
+<div>GAINLAB &nbsp;·&nbsp; <span>Free Forever</span> &nbsp;·&nbsp; Built for Lifters</div>
+<div style="margin-top:0.5rem; font-size:0.6rem; color: #333">Calculators are estimates. Consult a qualified professional for medical advice.</div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+// ── TOAST ────────────────────────────
+let toastTimer;
+function showToast(msg, type = 'success') {
+const t = document.getElementById('toast');
+t.textContent = msg;
+t.className = type === 'error' ? 'error' : '';
+clearTimeout(toastTimer);
+requestAnimationFrame(() => {
+t.classList.add('show');
+toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+});
+}
+
+// ── FIELD VALIDATION ─────────────────
+function clearErrors(ids) {
+ids.forEach(id => {
+const field = document.getElementById(id);
+if (field) field.closest('.field')?.classList.remove('field-error');
+});
+}
+
+function setError(id, msg) {
+const field = document.getElementById(id);
+if (!field) return;
+const wrap = field.closest('.field');
+if (!wrap) return;
+wrap.classList.add('field-error');
+let errEl = wrap.querySelector('.field-error-msg');
+if (!errEl) {
+errEl = document.createElement('div');
+errEl.className = 'field-error-msg';
+wrap.appendChild(errEl);
+}
+errEl.textContent = msg;
+field.focus();
+}
+
+function validateFields(fields) {
+// fields = [{id, label, min?, max?}]
+for (const f of fields) {
+const el = document.getElementById(f.id);
+if (!el) continue;
+const val = +el.value;
+if (!el.value || isNaN(val)) {
+setError(f.id, `${f.label} is required`);
+return false;
+}
+if (f.min !== undefined && val < f.min) {
+setError(f.id, `${f.label} must be at least ${f.min}`);
+return false;
+}
+if (f.max !== undefined && val > f.max) {
+setError(f.id, `${f.label} must be under ${f.max}`);
+return false;
+}
+}
+return true;
+}
+
+// ── LOCALSTORAGE PERSISTENCE ─────────
+function saveInputs(calcId, ids) {
+const data = {};
+ids.forEach(id => {
+const el = document.getElementById(id);
+if (el) data[id] = el.type === 'radio' ? null : el.value;
+});
+// handle radio groups
+document.querySelectorAll(`#calc-${calcId} input[type=radio]:checked`).forEach(r => {
+data[r.name] = r.value;
+});
+localStorage.setItem(`gainlab_${calcId}`, JSON.stringify(data));
+}
+
+function loadInputs(calcId) {
+try {
+const data = JSON.parse(localStorage.getItem(`gainlab_${calcId}`) || '{}');
+Object.entries(data).forEach(([id, val]) => {
+if (val === null) return;
+const el = document.getElementById(id);
+if (el) {
+el.value = val;
+} else {
+// try radio
+const r = document.querySelector(`input[name="${id}"][value="${val}"]`);
+if (r) r.checked = true;
+}
+});
+} catch(e) {}
+}
+
+// ── NAVIGATION ───────────────────────
+function showCalc(id, btn) {
+document.querySelectorAll('.calculator').forEach(c => c.classList.remove('active'));
+document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+document.getElementById('calc-' + id).classList.add('active');
+btn.classList.add('active');
+}
+
+function setResult(id, html) {
+const panel = document.getElementById('result-' + id);
+panel.innerHTML = `<div class="result-inner">${html}</div>`;
+panel.classList.add('has-result');
+requestAnimationFrame(() => {
+panel.querySelectorAll('.bar-fill[data-w]').forEach(bar => {
+bar.style.width = bar.dataset.w + '%';
+});
+});
+}
+
+function scrollToGuide() {
+document.getElementById('protein-guide').scrollIntoView({ behavior: 'smooth' });
+}
+
+function scrollToMuscleMap() {
+document.getElementById('muscle-map-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── TDEE ─────────────────────────────
+function calcTDEE() {
+clearErrors(['tdee-age','tdee-weight','tdee-height']);
+if (!validateFields([
+{id:'tdee-age', label:'Age', min:10, max:100},
+{id:'tdee-weight', label:'Weight', min:30, max:300},
+{id:'tdee-height', label:'Height', min:100, max:250},
+])) return;
+
+const gender = document.querySelector('input[name="tdee-gender"]:checked').value;
+const age = +document.getElementById('tdee-age').value;
+const w = +document.getElementById('tdee-weight').value;
+const h = +document.getElementById('tdee-height').value;
+const act = +document.getElementById('tdee-activity').value;
+
+saveInputs('tdee', ['tdee-age','tdee-weight','tdee-height','tdee-activity']);
+
+let bmr = gender === 'male'
+? (10*w) + (6.25*h) - (5*age) + 5
+: (10*w) + (6.25*h) - (5*age) - 161;
+const tdee = Math.round(bmr * act);
+const cut = Math.round(tdee - 500);
+const bulk = Math.round(tdee + 300);
+
+setResult('tdee', `
+<div class="result-number">${tdee.toLocaleString()}</div>
+<div class="result-unit">kcal / day</div>
+<div class="result-label">Your TDEE (maintenance)</div>
+<div class="result-breakdown">
+<div class="breakdown-row"><span class="breakdown-label">BMR (at rest)</span><span class="breakdown-val">${Math.round(bmr).toLocaleString()} kcal</span></div>
+<div class="breakdown-row"><span class="breakdown-label">To cut (−500 kcal)</span><span class="breakdown-val">${cut.toLocaleString()} kcal</span></div>
+<div class="breakdown-row"><span class="breakdown-label">To lean bulk (+300 kcal)</span><span class="breakdown-val highlight">${bulk.toLocaleString()} kcal</span></div>
+</div>`);
+showToast('TDEE calculated ✓');
+}
+
+// ── MACROS ───────────────────────────
+function calcMacros() {
+clearErrors(['m-cals','m-weight']);
+if (!validateFields([
+{id:'m-cals', label:'Daily calories', min:500, max:10000},
+{id:'m-weight', label:'Body weight', min:30, max:300},
+])) return;
+
+const cals = +document.getElementById('m-cals').value;
+const goal = document.getElementById('m-goal').value;
+const bw = +document.getElementById('m-weight').value;
+
+saveInputs('macros', ['m-cals','m-goal','m-weight']);
+
+let protG, fatPct;
+if (goal === 'bulk') { protG = bw * 1.8; fatPct = 0.25; }
+else if (goal === 'cut') { protG = bw * 2.2; fatPct = 0.25; }
+else { protG = bw * 2.0; fatPct = 0.28; }
+
+const protCals = protG * 4;
+const fatCals = cals * fatPct;
+const fatG = Math.round(fatCals / 9);
+const carbCals = cals - protCals - fatCals;
+const carbG = Math.round(carbCals / 4);
+const protGR = Math.round(protG);
+const pPct = Math.round((protCals / cals) * 100);
+const fPct = Math.round(fatPct * 100);
+const cPct = 100 - pPct - fPct;
+
+setResult('macros', `
+<div class="result-label" style="margin-bottom:1.25rem">Daily Macro Targets</div>
+<div class="result-breakdown" style="border-top:none;padding-top:0">
+<div>
+<div class="breakdown-row"><span class="breakdown-label">Protein</span><span class="breakdown-val highlight">${protGR}g</span></div>
+<div class="bar-container"><div class="bar-fill" data-w="${pPct}" style="width:0"></div></div>
+</div>
+<div style="margin-top:0.75rem">
+<div class="breakdown-row"><span class="breakdown-label">Carbohydrates</span><span class="breakdown-val">${carbG}g</span></div>
+<div class="bar-container"><div class="bar-fill" data-w="${cPct}" style="width:0;background:#fff"></div></div>
+</div>
+<div style="margin-top:0.75rem">
+<div class="breakdown-row"><span class="breakdown-label">Fat</span><span class="breakdown-val">${fatG}g</span></div>
+<div class="bar-container"><div class="bar-fill" data-w="${fPct}" style="width:0;background:#ff4d1c"></div></div>
+</div>
+<div class="breakdown-row" style="margin-top:1rem;border-top:1px solid #2a2a2a;padding-top:1rem">
+<span class="breakdown-label">Split</span>
+<span class="breakdown-val" style="font-size:0.75rem">${pPct}P / ${cPct}C / ${fPct}F</span>
+</div>
+</div>`);
+showToast('Macros split ✓');
+}
+
+// ── ONE REP MAX ──────────────────────
+function calcORM() {
+clearErrors(['orm-weight','orm-reps']);
+if (!validateFields([
+{id:'orm-weight', label:'Weight lifted', min:1, max:1000},
+{id:'orm-reps', label:'Reps', min:1, max:20},
+])) return;
+
+const w = +document.getElementById('orm-weight').value;
+const r = +document.getElementById('orm-reps').value;
+const lift = document.getElementById('orm-lift').value;
+
+saveInputs('orm', ['orm-lift','orm-weight','orm-reps']);
+
+const orm = r === 1 ? w : Math.round(w * (1 + r / 30));
+const pcts = [
+{pct:95, label:'95% — Heavy single'},
+{pct:85, label:'85% — Strength (3–5 reps)'},
+{pct:75, label:'75% — Hypertrophy (8–10 reps)'},
+{pct:65, label:'65% — Volume (12–15 reps)'},
+];
+const rows = pcts.map(p => `
+<div class="breakdown-row">
+<span class="breakdown-label">${p.label}</span>
+<span class="breakdown-val">${Math.round(orm * p.pct / 100)} kg</span>
+</div>`).join('');
+
+setResult('orm', `
+<div class="result-number">${orm}</div>
+<div class="result-unit">kg — estimated ${lift} 1RM</div>
+<div class="result-label">Training Zone Weights</div>
+<div class="result-breakdown">${rows}</div>`);
+showToast(`${lift} 1RM calculated ✓`);
+}
+
+// ── BODY FAT ─────────────────────────
+function toggleBFWaist() {
+const female = document.getElementById('bfg-f').checked;
+document.getElementById('bf-hip-field').style.display = female ? 'block' : 'none';
+}
+
+function calcBodyFat() {
+clearErrors(['bf-height','bf-neck','bf-waist','bf-hip']);
+const gender = document.querySelector('input[name="bf-gender"]:checked').value;
+const fields = [
+{id:'bf-height', label:'Height', min:100, max:250},
+{id:'bf-neck', label:'Neck', min:20, max:70},
+{id:'bf-waist', label:'Waist', min:40, max:200},
+];
+if (gender === 'female') fields.push({id:'bf-hip', label:'Hips', min:40, max:200});
+if (!validateFields(fields)) return;
+
+const h = +document.getElementById('bf-height').value;
+const neck = +document.getElementById('bf-neck').value;
+const waist = +document.getElementById('bf-waist').value;
+const hip = +document.getElementById('bf-hip').value;
+
+// Waist must be greater than neck
+if (waist <= neck) {
+setError('bf-waist', 'Waist must be larger than neck');
+return;
+}
+
+saveInputs('bodyfat', ['bf-height','bf-neck','bf-waist','bf-hip']);
+
+let bf;
+if (gender === 'male') {
+bf = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(h)) - 450;
+} else {
+bf = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(h)) - 450;
+}
+bf = Math.round(bf * 10) / 10;
+
+if (bf < 2 || bf > 70) {
+setError('bf-waist', 'Check measurements — result seems off');
+return;
+}
+
+let category, catColor;
+if (gender === 'male') {
+if (bf < 6) { category = 'Essential Fat'; catColor = '#f87171'; }
+else if (bf < 14) { category = 'Athletic'; catColor = '#c8f135'; }
+else if (bf < 18) { category = 'Fitness'; catColor = '#c8f135'; }
+else if (bf < 25) { category = 'Average'; catColor = '#f5f2ed'; }
+else { category = 'Obese'; catColor = '#f87171'; }
+} else {
+if (bf < 14) { category = 'Essential Fat'; catColor = '#f87171'; }
+else if (bf < 21) { category = 'Athletic'; catColor = '#c8f135'; }
+else if (bf < 25) { category = 'Fitness'; catColor = '#c8f135'; }
+else if (bf < 32) { category = 'Average'; catColor = '#f5f2ed'; }
+else { category = 'Obese'; catColor = '#f87171'; }
+}
+
+setResult('bodyfat', `
+<div class="result-number">${bf}%</div>
+<div class="result-unit">Estimated Body Fat</div>
+<div class="result-label" style="color:${catColor}">Category: ${category}</div>
+<div class="result-breakdown">
+<div class="breakdown-row"><span class="breakdown-label">Method</span><span class="breakdown-val">US Navy Tape</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Gender</span><span class="breakdown-val" style="text-transform:capitalize">${gender}</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Accuracy</span><span class="breakdown-val" style="color:#666">±3–4% vs DEXA</span></div>
+</div>`);
+showToast('Body fat estimated ✓');
+}
+
+// ── PROTEIN ──────────────────────────
+function calcProtein() {
+clearErrors(['prot-weight']);
+if (!validateFields([
+{id:'prot-weight', label:'Body weight', min:30, max:300},
+])) return;
+
+const bw = +document.getElementById('prot-weight').value;
+const goal = document.getElementById('prot-goal').value;
+const freq = document.getElementById('prot-freq').value;
+
+saveInputs('protein', ['prot-weight','prot-goal','prot-freq']);
+
+const multipliers = {
+build: {low:1.6, mid:1.9, high:2.2},
+maintain: {low:1.4, mid:1.6, high:1.8},
+cut: {low:1.8, mid:2.2, high:2.5},
+athlete: {low:1.2, mid:1.5, high:1.8},
+};
+const mult = multipliers[goal][freq];
+const grams = Math.round(bw * mult);
+const min = Math.round(bw * (mult - 0.2));
+const max = Math.round(bw * (mult + 0.2));
+const meals = [3,4,5,6].map(n => `
+<div class="breakdown-row">
+<span class="breakdown-label">${n} meals/day</span>
+<span class="breakdown-val">${Math.round(grams/n)}g per meal</span>
+</div>`).join('');
+
+setResult('protein', `
+<div class="result-number">${grams}g</div>
+<div class="result-unit">protein / day</div>
+<div class="result-label">Optimal range: ${min}–${max}g</div>
+<div class="result-breakdown">
+<div class="breakdown-row" style="margin-bottom:0.5rem"><span class="breakdown-label">Per meal distribution</span></div>
+${meals}
+</div>`);
+showToast('Protein target calculated ✓');
+}
+
+// ── PROTEIN GUIDE DATA ───────────────
+const foods = [
+{name:"Canned Tuna", category:"animal", protPer100:25, costPer10g:10, score:95, micros:["B12","Selenium","Iodine","Omega-3"], tip:"Lidl own-brand tuna is ~45p/tin. Eat straight from the can — zero effort.", badge:"🏆 Best Value"},
+{name:"Whole Eggs", category:"animal", protPer100:13, costPer10g:14, score:93, micros:["Choline","B12","Vit D","Selenium"], tip:"6 eggs for ~£1 at Aldi. Scramble, boil, or fry — quickest protein hit going.", badge:"⚡ Most Versatile"},
+{name:"Canned Chickpeas", category:"plant", protPer100:9, costPer10g:12, score:78, micros:["Iron","Folate","Manganese","Fibre"], tip:"Roast them in 20 mins for a crunchy snack. Add to rice for a complete amino profile.", badge:"🌱 Plant Pick"},
+{name:"Greek Yoghurt", category:"dairy", protPer100:10, costPer10g:18, score:86, micros:["Calcium","B12","Probiotics","Phosphorus"], tip:"Lidl/Aldi own-brand is cheapest. High satiety — great pre-bed protein source.", badge:""},
+{name:"Chicken Thighs", category:"animal", protPer100:20, costPer10g:20, score:88, micros:["B3","B6","Zinc","Phosphorus"], tip:"Cheaper than breast and more forgiving to cook. Batch cook 6 at once — £1.50 meal.", badge:"🍗 Batch Cook Hero"},
+{name:"Cottage Cheese", category:"dairy", protPer100:11, costPer10g:19, score:82, micros:["Casein","Calcium","B12","Selenium"], tip:"Slow-digesting casein makes it ideal before bed. Mix with fruit to make it edible.", badge:""},
+{name:"Red Lentils (dry)", category:"plant", protPer100:25, costPer10g:8, score:80, micros:["Iron","Folate","Potassium","Fibre"], tip:"500g bag for ~£1 — feeds you for a week. Not a complete protein, pair with rice.", badge:"💰 Cheapest Per Gram"},
+{name:"Whey Protein", category:"dairy", protPer100:75, costPer10g:22, score:84, micros:["BCAA","Leucine","Calcium","B2"], tip:"MyProtein during a sale = ~£25/kg. Only worth it if you're struggling to hit targets.", badge:""},
+{name:"Sardines (canned)", category:"animal", protPer100:21, costPer10g:13, score:91, micros:["Omega-3","Vit D","Calcium","B12"], tip:"Often overlooked but insanely nutritious. One of the best omega-3 sources per penny.", badge:"🐟 Most Nutritious"},
+{name:"Tofu (firm)", category:"plant", protPer100:17, costPer10g:24, score:72, micros:["Calcium","Iron","Manganese","Magnesium"], tip:"Press and pan-fry for crispy texture. Complete protein — all 9 essential amino acids.", badge:""},
+{name:"Milk (semi-skimmed)",category:"dairy", protPer100:3.5,costPer10g:17, score:79, micros:["Calcium","B12","Iodine","Vit D"], tip:"Already in your fridge. A pint adds 18g protein for pennies.", badge:""},
+{name:"Chicken Breast", category:"animal", protPer100:31, costPer10g:26, score:85, micros:["B3","B6","Phosphorus","Selenium"], tip:"Classic for a reason — but thighs are cheaper. Buy frozen in bulk to cut cost by 30%.", badge:""},
+];
+
+let currentFilter = 'all';
+let currentSort = 'cost';
+
+function scoreColor(s) {
+if (s >= 90) return 'var(--accent)';
+if (s >= 80) return '#7dd3fc';
+if (s >= 70) return 'var(--white)';
+return 'var(--text-muted)';
+}
+
+function renderGrid(data) {
+const grid = document.getElementById('food-grid');
+grid.innerHTML = data.map(f => `
+<div style="background:var(--mid);border:1px solid var(--border);border-radius:8px;padding:1.5rem;position:relative;overflow:hidden;transition:border-color 0.2s;"
+onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+${f.badge ? `<div style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-family:'DM Mono',monospace;letter-spacing:0.06em;color:var(--accent);">${f.badge}</div>` : ''}
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.05em;margin-bottom:0.75rem;padding-right:5rem;">${f.name}</div>
+<div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+<div>
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem;">Cost/10g prot</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">${f.costPer10g}p</div>
+</div>
+<div>
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem;">Protein/100g</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;line-height:1;">${f.protPer100}g</div>
+</div>
+<div>
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem;">Score</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;line-height:1;color:${scoreColor(f.score)};">${f.score}</div>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
+${f.micros.map(m => `<span style="background:rgba(255,255,255,0.05);border:1px solid var(--border);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;padding:0.2rem 0.5rem;border-radius:2px;color:var(--text-muted);">${m}</span>`).join('')}
+</div>
+<div style="font-size:0.8rem;color:#888;line-height:1.55;border-top:1px solid var(--border);padding-top:0.85rem;">💡 ${f.tip}</div>
+</div>`).join('');
+}
+
+function renderTable(data) {
+const tbody = document.getElementById('table-body');
+if (!tbody) return;
+tbody.innerHTML = data.map((f, i) => {
+const catColor = f.category === 'animal' ? '#fb923c' : f.category === 'plant' ? '#4ade80' : '#7dd3fc';
+const catLabel = f.category === 'animal' ? 'Animal' : f.category === 'plant' ? 'Plant' : 'Dairy';
+const costColor = f.costPer10g <= 14 ? '#4ade80' : f.costPer10g <= 20 ? '#fbbf24' : '#f87171';
+const rowBg = i % 2 === 0 ? '#0f0f0f' : '#0a0a0a';
+return `
+<tr style="border-bottom:1px solid #1a1a1a;background:${rowBg};transition:background 0.15s;"
+onmouseover="this.style.background='#1e2a12'" onmouseout="this.style.background='${rowBg}'">
+<td style="padding:0.9rem 1.25rem;">
+<div style="display:flex;align-items:center;gap:0.6rem;">
+<div style="width:7px;height:7px;border-radius:50%;background:${catColor};flex-shrink:0;"></div>
+<div>
+<div style="font-weight:500;font-size:0.88rem;">${f.name}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:${catColor};letter-spacing:0.08em;text-transform:uppercase;margin-top:0.1rem;">${catLabel}</div>
+</div>
+</div>
+</td>
+<td style="padding:0.9rem 1rem;text-align:right;font-family:'DM Mono',monospace;font-size:0.85rem;color:var(--white);font-weight:500;">${f.protPer100}g</td>
+<td style="padding:0.9rem 1rem;text-align:right;">
+<span style="font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:700;color:${costColor};">${f.costPer10g}p</span>
+</td>
+<td style="padding:0.9rem 1rem;text-align:center;">
+<span style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:${scoreColor(f.score)};letter-spacing:0.05em;">${f.score}</span>
+</td>
+<td style="padding:0.9rem 1.25rem;color:#999;font-size:0.78rem;">${f.micros.join(' · ')}</td>
+</tr>`}).join('');
+}
+
+function getFiltered() {
+let d = [...foods];
+if (currentFilter === 'animal') d = d.filter(f => f.category === 'animal');
+else if (currentFilter === 'plant') d = d.filter(f => f.category === 'plant');
+else if (currentFilter === 'dairy') d = d.filter(f => f.category === 'dairy');
+else if (currentFilter === 'budget') d = d.filter(f => f.costPer10g <= 20);
+return d;
+}
+
+function getSorted(data) {
+if (currentSort === 'cost') return data.sort((a,b) => a.costPer10g - b.costPer10g);
+if (currentSort === 'protein') return data.sort((a,b) => b.protPer100 - a.protPer100);
+if (currentSort === 'score') return data.sort((a,b) => b.score - a.score);
+return data;
+}
+
+function rerender() {
+renderGrid(getSorted(getFiltered()));
+renderTable(getSorted(getFiltered()));
+}
+
+function filterFood(f, btn) {
+currentFilter = f;
+document.querySelectorAll('#protein-guide .tab-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+rerender();
+}
+
+function sortFood(s, btn) {
+currentSort = s;
+document.querySelectorAll('[id^=sort-]').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+rerender();
+}
+
+// ── MUSCLE MAP ───────────────────────
+const muscleData = {
+chest: {
+name:'Chest (Pectoralis Major)', color:'#c8f135',
+hypertrophy:[
+{rank:1,name:'Incline Dumbbell Press',why:'Maximises stretch at the bottom — key driver of hypertrophy. Unilateral loading corrects imbalances.',reps:'8–12',sets:'3–4',rest:'90s'},
+{rank:2,name:'Cable Fly (Low to High)',why:'Constant tension through full ROM, especially peak contraction. Targets upper chest through stretch.',reps:'12–15',sets:'3',rest:'60s'},
+{rank:3,name:'Flat Barbell Bench Press',why:'Allows maximum load — essential for progressive overload. Best compound chest builder.',reps:'6–10',sets:'4',rest:'2–3min'},
+{rank:4,name:'Dumbbell Pullover',why:'Targets chest through long-length stretch — often underrated for pec minor and serratus.',reps:'10–15',sets:'3',rest:'60s'},
+],
+strength:[
+{name:'Flat Barbell Bench Press',protocol:'5×5 @ 80–85% 1RM'},
+{name:'Weighted Dips',protocol:'4×6 — add weight each week'},
+{name:'Close-Grip Bench Press',protocol:'3×5 — builds tricep lockout strength'},
+],
+tip:"Arch your back slightly on bench — this isn't cheating, it's biomechanics. Keep scapulae retracted and depressed.",
+},
+shoulders:{
+name:'Shoulders (Deltoids)', color:'#7dd3fc',
+hypertrophy:[
+{rank:1,name:'Lateral Raise (Cable)',why:'Cables provide resistance at full ROM, unlike dumbbells which unload at the bottom.',reps:'15–20',sets:'4',rest:'45s'},
+{rank:2,name:'Overhead Press (Dumbbell)',why:'Hits all three heads. Dumbbells allow natural wrist rotation and greater ROM than barbell.',reps:'8–12',sets:'4',rest:'90s'},
+{rank:3,name:'Face Pull (Cable)',why:'Crucial for rear delt development and shoulder health. Most lifters are rear-delt deficient.',reps:'15–20',sets:'3',rest:'60s'},
+{rank:4,name:'Arnold Press',why:'Rotational component recruits all three delt heads through a wider arc of motion.',reps:'10–12',sets:'3',rest:'90s'},
+],
+strength:[
+{name:'Barbell Overhead Press',protocol:'5×5 — cornerstone shoulder strength movement'},
+{name:'Push Press',protocol:'4×4 — leg drive allows heavier loading'},
+{name:'Seated DB Press',protocol:'4×6 — strict form, no momentum'},
+],
+tip:'Most shoulder injuries come from impingement. Always include rear delt and rotator cuff work — face pulls 3×/week minimum.',
+},
+back:{
+name:'Back (Lats, Rhomboids, Erectors)', color:'#f97316',
+hypertrophy:[
+{rank:1,name:'Weighted Pull-Up',why:'Unmatched lat activation. Long ROM with bodyweight + load. The squat of upper body training.',reps:'6–10',sets:'4',rest:'2min'},
+{rank:2,name:'Chest-Supported Row',why:'Eliminates lower back fatigue — lets you focus purely on mid-back contraction.',reps:'10–12',sets:'4',rest:'90s'},
+{rank:3,name:'Single-Arm DB Row',why:'Allows maximum ROM and loading per side. Brace the core, pull elbow to hip.',reps:'8–12',sets:'3',rest:'60s'},
+{rank:4,name:'Straight-Arm Pulldown',why:'Pure lat isolation with constant tension. Removes bicep from the movement.',reps:'12–15',sets:'3',rest:'60s'},
+],
+strength:[
+{name:'Barbell Deadlift',protocol:'5×3 @ 85–90% 1RM — king of posterior chain strength'},
+{name:'Weighted Pull-Up',protocol:'5×5 — add weight weekly with a dip belt'},
+{name:'Barbell Row',protocol:'4×5 — hinge at 45°, explosive pull'},
+],
+tip:'Think "elbows to back pockets" on rows — not "hands to chest." This cue switches focus from arms to back instantly.',
+},
+biceps:{
+name:'Biceps (Biceps Brachii)', color:'#a78bfa',
+hypertrophy:[
+{rank:1,name:'Incline Dumbbell Curl',why:'Stretches the long head under load — the most growth-stimulating position for the bicep.',reps:'10–15',sets:'3',rest:'60s'},
+{rank:2,name:'Cable Curl (Low Pulley)',why:'Constant tension throughout ROM — the cable loads the bicep even at full extension.',reps:'12–15',sets:'3',rest:'60s'},
+{rank:3,name:'EZ-Bar Curl',why:'Allows heavier loading than dumbbells. EZ-bar reduces wrist strain vs straight barbell.',reps:'8–12',sets:'4',rest:'90s'},
+{rank:4,name:'Hammer Curl',why:'Targets the brachialis — pushes the bicep up, making arms look larger.',reps:'10–15',sets:'3',rest:'60s'},
+],
+strength:[
+{name:'Barbell Curl',protocol:'4×6 @ heavy — strict form, no swinging'},
+{name:'Weighted Chin-Up',protocol:'4×5 — best compound bicep strength builder'},
+{name:'Zottman Curl',protocol:'3×8 — trains both flexion and brachioradialis'},
+],
+tip:'Supinate (twist your pinky out) at the top of every curl for peak bicep contraction. Most people skip this.',
+},
+triceps:{
+name:'Triceps (Triceps Brachii)', color:'#34d399',
+hypertrophy:[
+{rank:1,name:'Overhead Tricep Extension',why:'Stretches the long head under load — where most tricep growth happens.',reps:'10–15',sets:'3',rest:'60s'},
+{rank:2,name:'Cable Pushdown (Rope)',why:'Rope allows wrists to flare out for full contraction. Constant tension beats dumbbells.',reps:'12–15',sets:'3',rest:'60s'},
+{rank:3,name:'Close-Grip Bench Press',why:'Allows the most overload for triceps. Build strength here and your bench goes up too.',reps:'6–10',sets:'4',rest:'2min'},
+{rank:4,name:'Skull Crusher',why:'Direct elbow extension — great for medial and lateral head isolation.',reps:'10–12',sets:'3',rest:'90s'},
+],
+strength:[
+{name:'Close-Grip Bench Press',protocol:'5×5 — most loadable tricep movement'},
+{name:'Weighted Dips',protocol:'4×6 — lean forward less to bias triceps'},
+{name:'Board Press',protocol:'4×4 — targets lockout strength specifically'},
+],
+tip:'Triceps make up 2/3 of your upper arm. If you want bigger arms, train triceps harder than biceps.',
+},
+abs:{
+name:'Core (Abs & Obliques)', color:'#fbbf24',
+hypertrophy:[
+{rank:1,name:'Cable Crunch',why:'Only ab exercise with progressive overload built in. Add weight every week.',reps:'12–15',sets:'4',rest:'60s'},
+{rank:2,name:'Hanging Leg Raise',why:'Full ROM from dead hang — hits lower abs and hip flexors. Hardest but most effective.',reps:'10–15',sets:'3',rest:'60s'},
+{rank:3,name:'Ab Wheel Rollout',why:'Stretches abs under full eccentric load — highly challenging for rectus abdominis.',reps:'8–12',sets:'3',rest:'90s'},
+{rank:4,name:'Side Plank + Hip Lift',why:'Oblique-focused. Lateral flexion is neglected by most lifters.',reps:'10–12/side',sets:'3',rest:'45s'},
+],
+strength:[
+{name:'Plank Progressions',protocol:'3×60s → add weight on back over time'},
+{name:'Landmine Anti-Rotation',protocol:'3×12/side — core stability for big lifts'},
+{name:'Pallof Press',protocol:'3×12 — anti-rotation strength'},
+],
+tip:'Abs are made in the kitchen but built in the gym. Train them weighted 2–3×/week like any other muscle group.',
+},
+quads:{
+name:'Quads (Quadriceps)', color:'#f472b6',
+hypertrophy:[
+{rank:1,name:'Leg Extension (Lengthened)',why:'Quad hypertrophy is maximised in the stretched position — lean back to increase ROM.',reps:'10–15',sets:'4',rest:'60s'},
+{rank:2,name:'High-Bar Back Squat',why:'Greatest quad activation of any squat variation. More upright torso = more quad.',reps:'8–12',sets:'4',rest:'2min'},
+{rank:3,name:'Hack Squat / Leg Press',why:'High quad-focused loading without spinal load. Use full ROM — no quarter reps.',reps:'10–15',sets:'4',rest:'90s'},
+{rank:4,name:'Bulgarian Split Squat',why:'Unilateral — fixes imbalances. Higher hip flexor stretch than bilateral squats.',reps:'8–12/leg',sets:'3',rest:'90s'},
+],
+strength:[
+{name:'Back Squat',protocol:'5×5 @ 80% — the foundation of quad strength'},
+{name:'Front Squat',protocol:'4×4 — more upright, more quad dominant'},
+{name:'Paused Squat',protocol:'4×4 — 2s pause eliminates stretch reflex'},
+],
+tip:"To bias quads: elevate heels slightly, stay upright, let knees travel forward over toes. That's not bad form.",
+},
+hamstrings:{
+name:'Hamstrings (Biceps Femoris)', color:'#fb923c',
+hypertrophy:[
+{rank:1,name:'Romanian Deadlift',why:'Long-length loading under hip hinge. The most growth-stimulating hamstring exercise.',reps:'8–12',sets:'4',rest:'90s'},
+{rank:2,name:'Nordic Hamstring Curl',why:'Eccentric overload produces the most hypertrophy. Very demanding.',reps:'6–10',sets:'3',rest:'2min'},
+{rank:3,name:'Lying Leg Curl',why:'Isolated knee flexion — trains hamstrings independently from glutes.',reps:'10–15',sets:'3',rest:'60s'},
+{rank:4,name:'Good Morning',why:'Hip hinge under bar load — great for erector and hamstring co-development.',reps:'8–12',sets:'3',rest:'90s'},
+],
+strength:[
+{name:'Conventional Deadlift',protocol:'5×3 — most loaded hamstring pattern'},
+{name:'Romanian Deadlift',protocol:'4×6 @ heavy — control the eccentric'},
+{name:'Nordic Curl',protocol:'4×5 — hardest bodyweight hamstring exercise'},
+],
+tip:'Hamstring tears happen during the eccentric. Slow your RDL descent to 3–4 seconds — this also increases growth stimulus.',
+},
+glutes:{
+name:'Glutes (Gluteus Maximus)', color:'#e879f9',
+hypertrophy:[
+{rank:1,name:'Hip Thrust (Barbell)',why:'Peak glute activation at full hip extension. No other exercise matches this.',reps:'10–15',sets:'4',rest:'90s'},
+{rank:2,name:'Bulgarian Split Squat',why:'Hip flexor stretch at the bottom creates maximum glute loading.',reps:'8–12/leg',sets:'4',rest:'90s'},
+{rank:3,name:'Cable Pull-Through',why:'Hip hinge with constant glute tension. Better than deadlifts for isolated glute hypertrophy.',reps:'12–15',sets:'3',rest:'60s'},
+{rank:4,name:'Step-Up (Weighted)',why:'Unilateral hip extension with full ROM — underrated for glute development.',reps:'10–15/leg',sets:'3',rest:'60s'},
+],
+strength:[
+{name:'Barbell Hip Thrust',protocol:'5×5 — load heavily, squeeze at top'},
+{name:'Low-Bar Back Squat',protocol:'5×3 — hip-dominant pattern, more glute'},
+{name:'Sumo Deadlift',protocol:'4×4 — wider stance biases glutes over hamstrings'},
+],
+tip:'Posterior pelvic tilt at the top of every hip thrust — squeeze AND tuck your pelvis under. Most people just squeeze.',
+},
+calves:{
+name:'Calves (Gastrocnemius & Soleus)', color:'#2dd4bf',
+hypertrophy:[
+{rank:1,name:'Standing Calf Raise',why:'Full ROM, 3s stretch at bottom, 1s squeeze at top. Calves need high load AND stretch to grow.',reps:'10–15',sets:'4',rest:'60s'},
+{rank:2,name:'Seated Calf Raise',why:'Knee bent isolates the soleus — the deeper calf muscle that determines calf width.',reps:'15–20',sets:'4',rest:'60s'},
+{rank:3,name:'Donkey Calf Raise',why:'Hip hinge position changes soleus/gastroc ratio. Historically the #1 bodybuilder calf builder.',reps:'15–20',sets:'3',rest:'60s'},
+{rank:4,name:'Single-Leg Calf Raise',why:'Bodyweight on stairs. Full ROM essential. 2× volume per leg vs bilateral.',reps:'15–25/leg',sets:'3',rest:'45s'},
+],
+strength:[
+{name:'Standing Calf Raise',protocol:'5×8 @ max load — slow and full ROM'},
+{name:'Leg Press Calf Raise',protocol:'4×10 — allows very heavy loading'},
+{name:'Jump Rope',protocol:'3×2min — builds reactive calf strength'},
+],
+tip:'Calves are stubborn because you walk on them all day. They need higher volume (16–20 sets/week) and full ROM to grow.',
+},
+traps:{
+name:'Traps (Trapezius)', color:'#60a5fa',
+hypertrophy:[
+{rank:1,name:'Barbell Shrug',why:'Highest load upper trap exercise. Elevate fully, hold 1s at top, slow descent.',reps:'10–15',sets:'4',rest:'90s'},
+{rank:2,name:'Face Pull (Cable)',why:'Hits mid and lower traps + rear delts. Essential for shoulder health and upper back thickness.',reps:'15–20',sets:'3',rest:'60s'},
+{rank:3,name:'Rack Pull',why:'Heavy partial deadlift from knee height — enormous upper trap stimulus under load.',reps:'5–8',sets:'4',rest:'2min'},
+{rank:4,name:"Farmer's Carry",why:'Loaded carry challenges traps isometrically through the entire walk.',reps:'30–40m',sets:'4',rest:'90s'},
+],
+strength:[
+{name:'Barbell Shrug',protocol:'5×5 @ very heavy — use straps'},
+{name:'Rack Pull',protocol:'4×4 @ 100–120% of your deadlift'},
+{name:'Deadlift',protocol:'5×3 — traps work hard just to hold the bar'},
+],
+tip:'Trap development separates average physiques from elite ones. Shrug at the END of every pull session, 4×15.',
+},
+forearms:{
+name:'Forearms (Flexors & Extensors)', color:'#94a3b8',
+hypertrophy:[
+{rank:1,name:'Wrist Curl (Barbell)',why:'Direct flexor isolation. Use full ROM — wrist extended at bottom, fully flexed at top.',reps:'15–20',sets:'3',rest:'45s'},
+{rank:2,name:'Reverse Curl',why:'Trains forearm extensors and brachioradialis. Balances arm development.',reps:'12–15',sets:'3',rest:'60s'},
+{rank:3,name:'Dead Hang',why:'Isometric grip strength under bodyweight. Build to 60s+ for carry-over to all pulls.',reps:'30–60s',sets:'3',rest:'60s'},
+{rank:4,name:"Farmer's Carry",why:'Loaded grip training — the most functional forearm builder. Go heavy and walk far.',reps:'40m',sets:'4',rest:'90s'},
+],
+strength:[
+{name:'Thick Bar Deadlift',protocol:'4×5 — grip is the limiting factor'},
+{name:'Plate Pinch',protocol:'3×30s — pinch two 10kg plates together'},
+{name:'Towel Pull-Up',protocol:'3×5 — extreme grip challenge'},
+],
+tip:'Strong forearms improve every pull exercise. Train grip 2–3×/week — dead hangs and farmer carries are most efficient.',
+},
+};
+
+function selectMuscle(id) {
+document.querySelectorAll('.muscle-pill').forEach(p => p.classList.remove('active'));
+const pill = document.getElementById('pill-' + id);
+if (pill) pill.classList.add('active');
+renderExercises(id);
+}
+
+function renderExercises(id) {
+const d = muscleData[id];
+if (!d) return;
+const panel = document.getElementById('exercise-panel');
+
+const hyCards = d.hypertrophy.map((ex, i) => `
+<div style="border:1px solid ${i===0?'rgba(200,241,53,0.35)':'#222'};border-radius:6px;padding:1.1rem 1.25rem;background:${i===0?'rgba(200,241,53,0.04)':'#0d0d0d'};margin-bottom:0.6rem;">
+<div style="display:flex;align-items:flex-start;gap:0.85rem;margin-bottom:0.6rem;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;color:${i===0?'var(--accent)':'#2a2a2a'};min-width:1.8rem;flex-shrink:0;">${ex.rank}</div>
+<div style="flex:1;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.04em;color:var(--white);line-height:1.1;margin-bottom:0.4rem;">${ex.name}</div>
+<div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;background:#161616;border:1px solid #2a2a2a;padding:0.15rem 0.5rem;border-radius:20px;color:var(--accent);">${ex.sets} sets</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;background:#161616;border:1px solid #2a2a2a;padding:0.15rem 0.5rem;border-radius:20px;color:#7dd3fc;">${ex.reps} reps</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;background:#161616;border:1px solid #2a2a2a;padding:0.15rem 0.5rem;border-radius:20px;color:#666;">${ex.rest} rest</span>
+</div>
+</div>
+</div>
+<div style="font-size:0.8rem;color:#666;line-height:1.55;padding-left:3rem;">${ex.why}</div>
+</div>`).join('');
+
+const strRows = d.strength.map(s => `
+<div style="display:flex;justify-content:space-between;align-items:center;padding:0.7rem 0;border-bottom:1px solid #181818;gap:1rem;flex-wrap:wrap;">
+<div style="font-size:0.88rem;font-weight:500;">${s.name}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);flex-shrink:0;">${s.protocol}</div>
+</div>`).join('');
+
+panel.innerHTML = `
+<div style="background:#111;border:1px solid #222;border-radius:8px;overflow:hidden;animation:fadeUp 0.3s cubic-bezier(0.22,1,0.36,1);">
+<div style="padding:1.5rem;background:linear-gradient(135deg,#141414,#0d0d0d);border-bottom:1px solid #1e1e1e;">
+<div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.4rem;">
+<div style="width:8px;height:8px;border-radius:50%;background:${d.color};box-shadow:0 0 8px ${d.color};"></div>
+<div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:${d.color};">${d.name}</div>
+</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.03em;line-height:1;">BEST EXERCISES</div>
+</div>
+<div style="padding:1.25rem 1.5rem;border-bottom:1px solid #1e1e1e;">
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem;">🏆 For Hypertrophy</div>
+${hyCards}
+</div>
+<div style="padding:1.25rem 1.5rem;border-bottom:1px solid #1e1e1e;">
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:#7dd3fc;margin-bottom:0.75rem;">💪 For Strength</div>
+${strRows}
+</div>
+<div style="padding:1rem 1.5rem;background:#0a0a0a;">
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#333;margin-bottom:0.4rem;">Coach's Tip</div>
+<div style="font-size:0.82rem;color:#888;line-height:1.6;">💡 ${d.tip}</div>
+</div>
+</div>`;
+}
+
+// ── MUSCLE STRAIN ────────────────────
+function calcStrain() {
+clearErrors(['str-sets','str-reps','str-weight','str-orm']);
+if (!validateFields([
+{id:'str-sets', label:'Sets', min:1, max:30},
+{id:'str-reps', label:'Reps', min:1, max:50},
+{id:'str-weight', label:'Weight', min:1, max:500},
+{id:'str-orm', label:'1RM', min:1, max:500},
+])) return;
+
+const muscle = document.getElementById('str-muscle').value;
+const sets = +document.getElementById('str-sets').value;
+const reps = +document.getElementById('str-reps').value;
+const weight = +document.getElementById('str-weight').value;
+const orm = +document.getElementById('str-orm').value;
+const exp = document.getElementById('str-exp').value;
+const feel = document.getElementById('str-rir').value;
+
+if (weight > orm) { setError('str-weight', 'Weight can\'t exceed your 1RM'); return; }
+
+saveInputs('strain', ['str-muscle','str-sets','str-reps','str-weight','str-orm','str-exp','str-rir']);
+
+// Intensity as % of 1RM
+const intensity = weight / orm;
+
+// Volume load (sets × reps × weight)
+const volumeLoad = sets * reps * weight;
+
+// Intensity score (0–40): higher % of 1RM = more strain
+const intensityScore = Math.min(40, Math.round(intensity * 40));
+
+// Volume score (0–30): normalised by muscle group typical volume
+const volNorm = { chest:2000, back:3000, shoulders:1500, biceps:800, triceps:900,
+quads:4000, hamstrings:3000, glutes:3500, calves:1500,
+abs:500, traps:1200, forearms:600 };
+const volumeScore = Math.min(30, Math.round((volumeLoad / volNorm[muscle]) * 30));
+
+// Feel/RIR score (0–20)
+const feelScore = { easy:2, moderate:8, hard:15, maximal:20 }[feel];
+
+// Sets score (0–10): more sets = more fatigue
+const setsScore = Math.min(10, Math.round((sets / 6) * 10));
+
+// Raw score 0–100
+let score = intensityScore + volumeScore + feelScore + setsScore;
+score = Math.min(100, Math.max(1, score));
+
+// Experience modifier — advanced athletes recover faster
+const expMod = { beginner:1.3, intermediate:1.0, advanced:0.75 }[exp];
+
+// Muscle recovery base times (hours) — large/complex muscles take longer
+const baseRecovery = { chest:48, back:60, shoulders:44, biceps:36, triceps:36,
+quads:72, hamstrings:72, glutes:60, calves:32,
+abs:24, traps:40, forearms:28 };
+
+// Recovery = base * (score/50) * expMod, clamped
+let recoveryHours = Math.round(baseRecovery[muscle] * (score / 50) * expMod);
+recoveryHours = Math.min(120, Math.max(12, recoveryHours));
+const recoveryDays = (recoveryHours / 24).toFixed(1);
+
+// Strain category
+let category, catColor, catIcon, advice;
+if (score < 25) {
+category = 'Light Strain'; catColor = '#4ade80'; catIcon = '🟢';
+advice = 'Low fatigue — you can likely train this muscle again tomorrow if needed. Good warm-up session.';
+} else if (score < 50) {
+category = 'Moderate Strain'; catColor = '#fbbf24'; catIcon = '🟡';
+advice = 'Standard productive session. Allow full recovery before training this muscle again. Focus on sleep and protein.';
+} else if (score < 75) {
+category = 'High Strain'; catColor = '#fb923c'; catIcon = '🟠';
+advice = 'Significant fatigue accumulated. Prioritise recovery — extra sleep, high protein intake, and light movement only.';
+} else {
+category = 'Maximum Strain'; catColor = '#f87171'; catIcon = '🔴';
+advice = 'Very high fatigue load. Full rest required. Consider a deload if this is a recurring pattern. Risk of overtraining.';
+}
+
+// Muscle display name
+const muscleNames = { chest:'Chest', back:'Back', shoulders:'Shoulders',
+biceps:'Biceps', triceps:'Triceps', quads:'Quads', hamstrings:'Hamstrings',
+glutes:'Glutes', calves:'Calves', abs:'Abs / Core', traps:'Traps', forearms:'Forearms' };
+
+// Score bar segments
+const segW = Math.round(score);
+const segColor = score < 25 ? '#4ade80' : score < 50 ? '#fbbf24' : score < 75 ? '#fb923c' : '#f87171';
+
+setResult('strain', `
+<div class="result-number" style="color:${catColor}">${score}</div>
+<div class="result-unit">Strain Score / 100</div>
+<div style="margin-bottom:1.25rem;">
+<div class="bar-container" style="height:8px;margin-bottom:0.5rem;">
+<div class="bar-fill" data-w="${segW}" style="width:0;background:${segColor};border-radius:4px;"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:0.6rem;color:#444;">
+<span>LOW</span><span>MODERATE</span><span>HIGH</span><span>MAX</span>
+</div>
+</div>
+
+<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1.25rem;">
+<span style="font-size:1rem;">${catIcon}</span>
+<span style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.06em;color:${catColor};">${category}</span>
+</div>
+
+<div class="result-breakdown">
+<div class="breakdown-row">
+<span class="breakdown-label">Muscle</span>
+<span class="breakdown-val">${muscleNames[muscle]}</span>
+</div>
+<div class="breakdown-row">
+<span class="breakdown-label">Volume Load</span>
+<span class="breakdown-val">${volumeLoad.toLocaleString()} kg</span>
+</div>
+<div class="breakdown-row">
+<span class="breakdown-label">Intensity</span>
+<span class="breakdown-val">${Math.round(intensity*100)}% of 1RM</span>
+</div>
+<div class="breakdown-row" style="margin-top:0.5rem;padding-top:0.75rem;border-top:1px solid #2a2a2a;">
+<span class="breakdown-label">Recommended Rest</span>
+<span class="breakdown-val highlight">${recoveryDays} days (${recoveryHours}h)</span>
+</div>
+<div style="margin-top:1rem;padding:1rem;background:#0d0d0d;border-radius:6px;border:1px solid #1e1e1e;">
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#444;margin-bottom:0.4rem;">Recovery Advice</div>
+<div style="font-size:0.82rem;color:#999;line-height:1.6;">💡 ${advice}</div>
+</div>
+</div>`);
+showToast('Strain score calculated ✓');
+}
+
+// ── VOLUME CALCULATOR ────────────────
+const volumeRanges = {
+beginner: {
+chest: {mev:4, mav:10, mrv:15},
+back: {mev:4, mav:10, mrv:15},
+shoulders: {mev:4, mav:10, mrv:15},
+biceps: {mev:4, mav:10, mrv:14},
+triceps: {mev:4, mav:10, mrv:14},
+quads: {mev:4, mav:10, mrv:16},
+hamstrings: {mev:4, mav:10, mrv:15},
+glutes: {mev:4, mav:10, mrv:16},
+calves: {mev:4, mav:10, mrv:16},
+abs: {mev:4, mav:10, mrv:16},
+traps: {mev:4, mav:10, mrv:14},
+},
+intermediate: {
+chest: {mev:6, mav:16, mrv:22},
+back: {mev:8, mav:18, mrv:25},
+shoulders: {mev:6, mav:16, mrv:22},
+biceps: {mev:6, mav:14, mrv:20},
+triceps: {mev:6, mav:14, mrv:20},
+quads: {mev:8, mav:16, mrv:24},
+hamstrings: {mev:6, mav:14, mrv:20},
+glutes: {mev:6, mav:14, mrv:20},
+calves: {mev:6, mav:16, mrv:22},
+abs: {mev:6, mav:16, mrv:20},
+traps: {mev:6, mav:14, mrv:20},
+},
+advanced: {
+chest: {mev:8, mav:20, mrv:28},
+back: {mev:10, mav:22, mrv:30},
+shoulders: {mev:8, mav:20, mrv:26},
+biceps: {mev:8, mav:18, mrv:26},
+triceps: {mev:8, mav:18, mrv:26},
+quads: {mev:10, mav:20, mrv:28},
+hamstrings: {mev:8, mav:18, mrv:25},
+glutes: {mev:8, mav:16, mrv:24},
+calves: {mev:8, mav:20, mrv:28},
+abs: {mev:8, mav:18, mrv:24},
+traps: {mev:8, mav:16, mrv:22},
+},
+};
+
+const muscleLabels = {
+chest:'Chest', back:'Back', shoulders:'Shoulders',
+biceps:'Biceps', triceps:'Triceps', quads:'Quads',
+hamstrings:'Hamstrings', glutes:'Glutes', calves:'Calves',
+abs:'Abs / Core', traps:'Traps',
+};
+
+const muscleIcons = {
+chest:'🫁', back:'🔙', shoulders:'🏋️', biceps:'💪', triceps:'💪',
+quads:'🦵', hamstrings:'🦵', glutes:'🍑', calves:'🦶', abs:'⚡', traps:'🏔️',
+};
+
+function buildVolumeGrid() {
+const exp = document.getElementById('vol-exp').value;
+const ranges = volumeRanges[exp];
+const grid = document.getElementById('vol-grid');
+
+grid.innerHTML = Object.entries(muscleLabels).map(([key, label]) => {
+const r = ranges[key];
+const savedVal = (() => { try { return JSON.parse(localStorage.getItem('gainlab_volume')||'{}')[key] || 0; } catch(e){ return 0; } })();
+return `
+<div style="background:var(--mid);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:0.85rem;">
+<div style="font-size:1.4rem;flex-shrink:0;">${muscleIcons[key]}</div>
+<div style="flex:1;min-width:0;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.05em;margin-bottom:0.2rem;">${label}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;letter-spacing:0.06em;">MEV ${r.mev} · MAV ${r.mav} · MRV ${r.mrv} sets</div>
+</div>
+<div style="display:flex;align-items:center;gap:0.4rem;">
+<button onclick="adjustVol('${key}',-1)" style="width:28px;height:28px;border-radius:50%;background:#111;border:1px solid #333;color:var(--white);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;flex-shrink:0;">−</button>
+<input type="number" id="vol-${key}" value="${savedVal}" min="0" max="40"
+style="width:44px;text-align:center;background:#0a0a0a;border:1px solid #333;color:var(--white);font-family:'Bebas Neue',sans-serif;font-size:1.3rem;padding:0.3rem;border-radius:4px;outline:none;"
+oninput="liveVolumeBar('${key}')">
+<button onclick="adjustVol('${key}',1)" style="width:28px;height:28px;border-radius:50%;background:#111;border:1px solid #333;color:var(--white);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;flex-shrink:0;">+</button>
+</div>
+</div>`;
+}).join('');
+}
+
+function adjustVol(key, delta) {
+const el = document.getElementById('vol-' + key);
+el.value = Math.max(0, Math.min(40, (+el.value || 0) + delta));
+liveVolumeBar(key);
+}
+
+function liveVolumeBar(key) {
+// Save as user types
+saveVolumeInputs();
+}
+
+function saveVolumeInputs() {
+const data = {};
+Object.keys(muscleLabels).forEach(key => {
+const el = document.getElementById('vol-' + key);
+if (el) data[key] = +el.value || 0;
+});
+localStorage.setItem('gainlab_volume', JSON.stringify(data));
+}
+
+function updateVolumeRanges() {
+buildVolumeGrid();
+}
+
+function calcVolume() {
+const exp = document.getElementById('vol-exp').value;
+const ranges = volumeRanges[exp];
+saveVolumeInputs();
+
+const results = Object.entries(muscleLabels).map(([key, label]) => {
+const sets = +document.getElementById('vol-' + key).value || 0;
+const r = ranges[key];
+let status, color, icon, advice;
+
+if (sets === 0) {
+status = 'Not Training'; color = '#444'; icon = '⬛';
+advice = 'No volume this week';
+} else if (sets < r.mev) {
+status = 'Under MEV'; color = '#f87171'; icon = '🔴';
+advice = `Below minimum. Add ${r.mev - sets} more set${r.mev - sets > 1 ? 's' : ''} to stimulate growth`;
+} else if (sets <= r.mav) {
+status = 'Optimal'; color = '#4ade80'; icon = '🟢';
+advice = `Perfect range. ${r.mav - sets > 0 ? `Could add up to ${r.mav - sets} more sets` : 'At maximum adaptive volume'}`;
+} else if (sets <= r.mrv) {
+status = 'High Volume'; color = '#fbbf24'; icon = '🟡';
+advice = `Productive but demanding. ${r.mrv - sets} sets below MRV — monitor recovery`;
+} else {
+status = 'Overreaching'; color = '#f97316'; icon = '🟠';
+advice = `Exceeds MRV by ${sets - r.mrv} sets — high injury and burnout risk. Reduce volume`;
+}
+
+// Bar width as % of MRV
+const barPct = Math.min(100, Math.round((sets / r.mrv) * 100));
+const barColor = sets < r.mev ? '#f87171' : sets <= r.mav ? '#4ade80' : sets <= r.mrv ? '#fbbf24' : '#f97316';
+
+return {key, label, sets, status, color, icon, advice, barPct, barColor, r};
+}).filter(m => m.sets > 0 || true);
+
+const training = results.filter(m => m.sets > 0);
+const totalSets = training.reduce((s, m) => s + m.sets, 0);
+const optimal = training.filter(m => m.status === 'Optimal').length;
+const under = training.filter(m => m.status === 'Under MEV').length;
+const over = training.filter(m => m.status === 'Overreaching' || m.status === 'High Volume').length;
+const notTraining = results.filter(m => m.sets === 0).length;
+
+// Overall score
+const overallScore = training.length === 0 ? 0 :
+Math.round((optimal / training.length) * 100);
+
+const scoreColor = overallScore >= 70 ? '#4ade80' : overallScore >= 40 ? '#fbbf24' : '#f87171';
+
+const muscleRows = results.map(m => `
+<div style="padding:0.9rem 0;border-bottom:1px solid #141414;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.5rem;">
+<div style="display:flex;align-items:center;gap:0.5rem;">
+<span>${m.icon}</span>
+<span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.04em;">${m.label}</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.62rem;color:${m.color};letter-spacing:0.06em;text-transform:uppercase;">${m.status}</span>
+</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:${m.sets===0?'#333':m.color};">${m.sets} sets</div>
+</div>
+<div style="height:5px;background:#1a1a1a;border-radius:3px;margin-bottom:0.4rem;position:relative;overflow:hidden;">
+<div style="position:absolute;left:0;top:0;height:100%;width:${m.barPct}%;background:${m.barColor};border-radius:3px;transition:width 0.6s cubic-bezier(0.34,1.56,0.64,1);"></div>
+<!-- MEV marker -->
+<div style="position:absolute;top:0;left:${Math.round((m.r.mev/m.r.mrv)*100)}%;width:1px;height:100%;background:#333;"></div>
+<!-- MAV marker -->
+<div style="position:absolute;top:0;left:${Math.round((m.r.mav/m.r.mrv)*100)}%;width:1px;height:100%;background:#444;"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:0.58rem;color:#333;margin-bottom:0.3rem;">
+<span>MEV: ${m.r.mev}</span><span>MAV: ${m.r.mav}</span><span>MRV: ${m.r.mrv}</span>
+</div>
+${m.sets > 0 ? `<div style="font-size:0.78rem;color:#666;">💡 ${m.advice}</div>` : ''}
+</div>`).join('');
+
+document.getElementById('result-volume').innerHTML = `
+<div style="background:#111;border:1px solid #222;border-radius:8px;overflow:hidden;animation:fadeUp 0.3s cubic-bezier(0.22,1,0.36,1);">
+
+<!-- HEADER SUMMARY -->
+<div style="padding:1.5rem;background:linear-gradient(135deg,#141414,#0d0d0d);border-bottom:1px solid #1e1e1e;display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;">
+<div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:4rem;line-height:1;color:${scoreColor};">${overallScore}%</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#444;letter-spacing:0.12em;text-transform:uppercase;">Programme Quality</div>
+</div>
+<div style="display:flex;gap:1.25rem;flex-wrap:wrap;">
+<div style="text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#4ade80;line-height:1;">${optimal}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;">Optimal</div>
+</div>
+<div style="text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#f87171;line-height:1;">${under}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;">Under MEV</div>
+</div>
+<div style="text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fbbf24;line-height:1;">${over}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;">Too High</div>
+</div>
+<div style="text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#333;line-height:1;">${notTraining}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;">Not Training</div>
+</div>
+</div>
+</div>
+
+<!-- LEGEND -->
+<div style="padding:0.75rem 1.5rem;background:#0d0d0d;border-bottom:1px solid #1a1a1a;display:flex;gap:1.25rem;flex-wrap:wrap;">
+<span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;">Legend:</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#888;">MEV = Minimum Effective Volume</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#888;">MAV = Maximum Adaptive Volume</span>
+<span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#888;">MRV = Maximum Recoverable Volume</span>
+</div>
+
+<!-- MUSCLE BREAKDOWN -->
+<div style="padding:0.5rem 1.5rem 1rem;">
+${muscleRows}
+</div>
+
+<!-- TOTAL -->
+<div style="padding:1rem 1.5rem;background:#0a0a0a;border-top:1px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center;">
+<span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#444;text-transform:uppercase;letter-spacing:0.1em;">Total Weekly Sets</span>
+<span style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--accent);">${totalSets}</span>
+</div>
+</div>`;
+
+showToast('Volume analysed ✓');
+}
+
+// ── CUT / BULK PLANNER ───────────────
+const aggressionLevels = {
+cut: [
+{ label:'Slow & Steady', pct:0.10, kgWk:0.25, risk:'Lowest muscle loss risk. Ideal for advanced lifters or competition prep.', shortLabel:'Very Slow' },
+{ label:'Conservative', pct:0.15, kgWk:0.35, risk:'Minimal muscle loss. Best for most intermediate lifters.', shortLabel:'Conservative' },
+{ label:'Moderate', pct:0.20, kgWk:0.50, risk:'Balanced speed and muscle retention. Recommended starting point.', shortLabel:'Moderate' },
+{ label:'Aggressive', pct:0.25, kgWk:0.65, risk:'Faster results but increased hunger and slight muscle loss risk.', shortLabel:'Aggressive' },
+{ label:'Very Aggressive',pct:0.30, kgWk:0.80, risk:'Maximum fat loss speed. High hunger, fatigue, and muscle loss risk. Short-term only.', shortLabel:'Very Aggressive' },
+],
+bulk: [
+{ label:'Slow & Clean', pct:0.03, kgWk:0.10, risk:'Minimal fat gain. Very slow — best for advanced lifters who gain fat easily.', shortLabel:'Very Slow' },
+{ label:'Lean Bulk', pct:0.05, kgWk:0.15, risk:'Minimal fat gain with steady muscle growth. Ideal for intermediate lifters.', shortLabel:'Lean' },
+{ label:'Moderate Bulk', pct:0.08, kgWk:0.20, risk:'Balanced muscle gain with manageable fat. Recommended for most people.', shortLabel:'Moderate' },
+{ label:'Aggressive Bulk',pct:0.12, kgWk:0.30, risk:'Faster muscle gain but noticeable fat accumulation. Good for beginners.', shortLabel:'Aggressive' },
+{ label:'Dirty Bulk', pct:0.20, kgWk:0.50, risk:'Maximum calorie surplus. Fast weight gain, significant fat accumulation. Not recommended beyond 8 weeks.', shortLabel:'Dirty Bulk' },
+],
+};
+
+function getAggressionMode() {
+const goal = document.getElementById('cb-goal')?.value;
+return (goal === 'bulk') ? 'bulk' : 'cut';
+}
+
+function calcCutBulk() {
+clearErrors(['cb-weight','cb-bf','cb-tdee']);
+if (!validateFields([
+{id:'cb-weight', label:'Current weight', min:30, max:300},
+{id:'cb-bf', label:'Body fat %', min:3, max:60},
+{id:'cb-tdee', label:'TDEE', min:800, max:8000},
+])) return;
+
+const gender = document.querySelector('input[name="cb-gender"]:checked').value;
+const weight = +document.getElementById('cb-weight').value;
+const bf = +document.getElementById('cb-bf').value;
+const tdee = +document.getElementById('cb-tdee').value;
+const goal = document.getElementById('cb-goal').value;
+const exp = document.getElementById('cb-exp').value;
+const weeks = +document.getElementById('cb-weeks').value;
+const aggVal = +document.getElementById('cb-aggression').value;
+
+saveInputs('cutbulk', ['cb-weight','cb-bf','cb-tdee','cb-goal','cb-exp','cb-weeks']);
+
+const leanMass = Math.round(weight * (1 - bf/100));
+
+// ── RECOMMENDATION ──
+let recommendation, recReason;
+if (goal === 'auto') {
+if (gender === 'male') {
+if (bf > 20) { recommendation='cut'; recReason=`At ${bf}% body fat you'll struggle to build quality muscle and your health markers will suffer. Get lean first — bulk once you're under 15%.`; }
+else if (bf > 15) { recommendation='cut'; recReason=`${bf}% is above the sweet spot for bulking. A cut to ~12% first will improve insulin sensitivity and let you build cleaner muscle.`; }
+else if (bf < 8) { recommendation='bulk'; recReason=`At ${bf}% you're very lean — your body is primed to build muscle. Time to eat more and grow.`; }
+else { recommendation='bulk'; recReason=`${bf}% is the ideal range to start a lean bulk. You have good insulin sensitivity and room to add muscle without excess fat gain.`; }
+} else {
+if (bf > 30) { recommendation='cut'; recReason=`At ${bf}% body fat a cut will significantly improve your health markers and physique. Aim for 22–25% before considering a bulk.`; }
+else if (bf > 25) { recommendation='cut'; recReason=`${bf}% is above optimal for building muscle efficiently. A cut to ~22% first will set you up for a much cleaner bulk.`; }
+else if (bf < 16) { recommendation='bulk'; recReason=`At ${bf}% you're very lean — your body will respond well to a calorie surplus right now.`; }
+else { recommendation='bulk'; recReason=`${bf}% is a great range to begin a lean bulk. You have good hormonal conditions for building muscle.`; }
+}
+} else {
+recommendation = goal;
+recReason = goal === 'recomp'
+? 'Body recomposition works best for beginners and people returning after a break — expect slower but simultaneous fat loss and muscle gain.'
+: `You've chosen to ${goal}. Here's your personalised plan based on your selected aggression level.`;
+}
+
+// ── CALORIE TARGETS via aggression slider ──
+let dailyCals, weeklyChange, changeColor;
+
+if (recommendation === 'recomp') {
+dailyCals = tdee;
+weeklyChange = 0;
+changeColor = '#fbbf24';
+} else {
+const mode = recommendation === 'cut' ? 'cut' : 'bulk';
+const level = aggressionLevels[mode][aggVal - 1];
+if (mode === 'cut') {
+dailyCals = Math.round(tdee * (1 - level.pct));
+weeklyChange = -level.kgWk;
+changeColor = '#7dd3fc';
+} else {
+dailyCals = Math.round(tdee * (1 + level.pct));
+weeklyChange = level.kgWk;
+changeColor = '#4ade80';
+}
+}
+
+const aggressionLabel = recommendation === 'recomp'
+? 'Maintenance'
+: aggressionLevels[recommendation === 'cut' ? 'cut' : 'bulk'][aggVal-1].label;
+
+// ── MACROS ──
+const protein = Math.round(weight * (recommendation === 'cut' ? 2.4 : 1.8));
+const fat = Math.round(dailyCals * 0.25 / 9);
+const carbs = Math.round((dailyCals - protein*4 - fat*9) / 4);
+
+// ── PROJECTION ──
+const totalChange = Math.round(weeklyChange * weeks * 10) / 10;
+const endWeight = Math.round((weight + totalChange) * 10) / 10;
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + weeks * 7);
+const dateStr = targetDate.toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
+
+const deficit = Math.abs(tdee - dailyCals);
+const surplusLabel = recommendation === 'cut'
+? `${deficit} kcal deficit`
+: recommendation === 'bulk'
+? `${deficit} kcal surplus`
+: 'Maintenance calories';
+
+// ── PHASES ──
+const phases = recommendation === 'cut' ? [
+{week:'Weeks 1–2', title:'Adaptation', desc:`Scale weight may fluctuate as your body adjusts glycogen and water. Stay consistent — real fat loss starts here.`},
+{week:'Weeks 3–6', title:'Active Fat Loss', desc:`Expect ~${Math.abs(weeklyChange)}kg/week. Energy may dip slightly — prioritise sleep, keep training intensity high, and hit your protein target daily.`},
+{week:`Weeks 7–${weeks}`, title:'Final Phase', desc:`Losses may slow as you get leaner. Consider a 1-week diet break at maintenance if fatigue spikes. Protein becomes even more critical to retain muscle.`},
+] : recommendation === 'bulk' ? [
+{week:'Weeks 1–2', title:'Adjustment', desc:`Initial weight gain is mostly glycogen and water — don't panic. Your body is loading up for growth.`},
+{week:'Weeks 3–8', title:'Active Growth', desc:`Strength should climb weekly. Aim for progressive overload every session. Expect ~${weeklyChange}kg/week on the scale.`},
+{week:`Weeks 9–${weeks}`, title:'Momentum', desc:`Meaningful size will be accumulating. Monitor body fat — if it exceeds ${gender==='male'?18:28}%, consider a mini cut before continuing.`},
+] : [
+{week:'Weeks 1–4', title:'Baseline', desc:`Track weight and strength consistently. Recomp is slow — judge by the mirror and how your clothes fit, not just the scale.`},
+{week:`Weeks 5–${Math.round(weeks*0.7)}`, title:'Building Momentum', desc:`Protein synthesis and fat oxidation improve together. Strength gains are the primary signal it's working.`},
+{week:`Weeks ${Math.round(weeks*0.7)}–${weeks}`, title:'Visible Progress', desc:`Body composition changes become visible even if scale weight barely moves. Reassess and consider a dedicated cut or bulk.`},
+];
+
+const verdictIcon = recommendation==='cut' ? '📉' : recommendation==='bulk' ? '📈' : '🔄';
+const verdictLabel = recommendation==='cut' ? 'CUT' : recommendation==='bulk' ? 'BULK' : 'RECOMP';
+const verdictColor = recommendation==='cut' ? '#7dd3fc' : recommendation==='bulk' ? '#4ade80' : '#fbbf24';
+
+const phaseCards = phases.map(p => `
+<div style="border:1px solid #1e1e1e;border-radius:6px;padding:1rem;background:#0d0d0d;margin-bottom:0.6rem;">
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;color:${verdictColor};letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.25rem;">${p.week}</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.04em;margin-bottom:0.3rem;">${p.title}</div>
+<div style="font-size:0.78rem;color:#777;line-height:1.55;">${p.desc}</div>
+</div>`).join('');
+
+setResult('cutbulk', `
+<div style="animation:fadeUp 0.35s cubic-bezier(0.22,1,0.36,1);">
+<!-- VERDICT -->
+<div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #1e1e1e;">
+<div style="font-size:2.5rem;line-height:1;">${verdictIcon}</div>
+<div>
+<div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:#444;margin-bottom:0.15rem;">Recommendation</div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;color:${verdictColor};">${verdictLabel}
+<span style="font-size:1rem;color:#555;margin-left:0.5rem;">${aggressionLabel}</span>
+</div>
+</div>
+</div>
+<div style="font-size:0.82rem;color:#888;line-height:1.6;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #1e1e1e;">${recReason}</div>
+
+<!-- CALORIE TARGET -->
+<div style="display:flex;align-items:baseline;gap:0.5rem;margin-bottom:0.2rem;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;color:${verdictColor};">${dailyCals.toLocaleString()}</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:#444;text-transform:uppercase;letter-spacing:0.1em;">kcal/day</div>
+</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.62rem;color:#555;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.25rem;">${surplusLabel}</div>
+
+<!-- MACROS -->
+<div style="display:flex;gap:0.6rem;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #1e1e1e;flex-wrap:wrap;">
+<div style="flex:1;min-width:55px;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:6px;padding:0.7rem;text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--accent);line-height:1;">${protein}g</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.55rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;margin-top:0.15rem;">Protein</div>
+</div>
+<div style="flex:1;min-width:55px;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:6px;padding:0.7rem;text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#7dd3fc;line-height:1;">${carbs}g</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.55rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;margin-top:0.15rem;">Carbs</div>
+</div>
+<div style="flex:1;min-width:55px;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:6px;padding:0.7rem;text-align:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#f97316;line-height:1;">${fat}g</div>
+<div style="font-family:'DM Mono',monospace;font-size:0.55rem;color:#444;text-transform:uppercase;letter-spacing:0.08em;margin-top:0.15rem;">Fat</div>
+</div>
+</div>
+
+<!-- PROJECTION -->
+<div class="result-breakdown" style="margin-bottom:1.25rem;">
+<div class="breakdown-row"><span class="breakdown-label">Current Weight</span><span class="breakdown-val">${weight}kg</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Lean Mass</span><span class="breakdown-val">${leanMass}kg</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Weekly Change</span><span class="breakdown-val" style="color:${verdictColor};">${weeklyChange > 0 ? '+':''}${weeklyChange}kg/week</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Projected (${weeks} weeks)</span><span class="breakdown-val highlight">${endWeight}kg</span></div>
+<div class="breakdown-row"><span class="breakdown-label">Target Date</span><span class="breakdown-val">${dateStr}</span></div>
+</div>
+
+<!-- PHASES -->
+<div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:${verdictColor};margin-bottom:0.75rem;">📅 Phase Breakdown</div>
+${phaseCards}
+</div>`);
+showToast('Plan built ✓');
+}
+
+function updateAggressionDisplay() {
+const val = +document.getElementById('cb-aggression').value;
+const goal = document.getElementById('cb-goal')?.value;
+const valEl = document.getElementById('cb-aggression-val');
+const hintEl = document.getElementById('cb-aggression-hint');
+if (!valEl || !hintEl) return;
+
+if (goal === 'recomp') {
+const labels = ['Minimal','Light','Moderate','High','Max'];
+valEl.textContent = labels[val-1];
+hintEl.textContent = 'Recomp works at maintenance calories — focus on training hard and hitting protein.';
+return;
+}
+const mode = goal === 'bulk' ? 'bulk' : 'cut';
+const level = aggressionLevels[mode][val-1];
+valEl.textContent = level.shortLabel;
+const pctDisplay = Math.round(level.pct * 100);
+hintEl.textContent = `~${pctDisplay}% ${mode === 'cut' ? 'deficit' : 'surplus'} · ~${level.kgWk}kg/week · ${level.risk}`;
+}
+
+function updateAggressionLabel() {
+const goal = document.getElementById('cb-goal')?.value;
+const label = document.getElementById('cb-aggression-label');
+if (!label) return;
+label.textContent = goal === 'bulk' ? 'Surplus Aggression' : goal === 'recomp' ? 'Training Intensity' : 'Deficit Aggression';
+updateAggressionDisplay();
+}
+
+
+
+
+
+// ── SCROLL REVEAL ────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+entries.forEach(e => {
+if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+});
+}, { threshold: 0.06 });
+document.querySelectorAll('.section-reveal').forEach(el => revealObserver.observe(el));
+
+// ── INIT: restore saved inputs ────────
+loadInputs('tdee');
+loadInputs('macros');
+loadInputs('orm');
+loadInputs('bodyfat');
+loadInputs('protein');
+loadInputs('strain');
+loadInputs('cutbulk');
+buildVolumeGrid();
+rerender();
+
+</script>
+
+</body>
+</html>E html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary SEO -->
+
+<title>GymCalculator — Free Fitness Calculators for Serious Lifters</title>
+<meta name="description" content="Free fitness calculators for lifters and athletes. TDEE, macros, one rep max, body fat %, protein needs, muscle map exercise guide and budget protein sources. Built for uni students and gym-goers.">
+<meta name="keywords" content="TDEE calculator, macro calculator, one rep max calculator, body fat calculator, protein calculator, fitness tools, gym calculator, bulking calories, cutting macros">
+<meta name="author" content="GymCalculator">
+<link rel="canonical" href="https://gymcalculator.co.uk/">
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gymcalculator.co.uk/">
+<meta property="og:title" content="GymCalculator — Free Fitness Calculators">
+<meta property="og:description" content="TDEE, macros, one rep max, body fat %, protein needs and more. Science-backed tools for lifters. Free forever.">
+<meta property="og:image" content="https://gymcalculator.co.uk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="GymCalculator">
+
+<!-- Twitter / X Card -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://gymcalculator.co.uk/">
+<meta name="twitter:title" content="GymCalculator — Free Fitness Calculators">
+<meta name="twitter:description" content="TDEE, macros, 1RM, body fat %, protein needs, muscle map. Free tools for serious lifters.">
+<meta name="twitter:image" content="https://gymcalculator.co.uk/og-image.png">
+
+<!-- Favicon — inline SVG as data URI, no external files needed -->
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230a0a0a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23c8f135'>G</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230a0a0a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23c8f135'>G</text></svg>">
+
+<!-- Structured Data -->
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "WebApplication",
+"name": "GymCalculator",
+"url": "https://gymcalculator.co.uk",
 "description": "Free fitness calculators including TDEE, macros, one rep max, body fat percentage and protein needs.",
 "applicationCategory": "HealthApplication",
 "operatingSystem": "Any",
